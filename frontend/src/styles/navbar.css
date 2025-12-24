@@ -1,0 +1,456 @@
+/* ===================================
+   LIQUID GLASS NAVBAR - iPhone Style
+=================================== */
+.navbar {
+  position: fixed;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 1200px;
+  padding: 18px 40px;
+  
+  /* Liquid Glass Effect */
+  background: rgba(255, 255, 255, 0.08);
+  /* backdrop-filter: blur(1px) saturate(190%); */
+  /* -webkit-backdrop-filter: blur(40px) saturate(180%); */
+  
+  /* iPhone-style border */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50px;
+  
+  /* Shadows for depth */
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, backdrop-filter;
+}
+
+.navbar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  pointer-events: none;
+}
+
+.navbar.scrolled {
+  padding: 14px 36px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(50px) saturate(200%);
+  -webkit-backdrop-filter: blur(50px) saturate(200%);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+/* ===================================
+   LOGO - Liquid Glass
+=================================== */
+.logo {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo-highlight {
+  background: linear-gradient(135deg, #a78bff, #60efff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 20px rgba(96, 239, 255, 0.3));
+}
+
+.logo:hover {
+  transform: translateY(-2px) scale(1.05);
+  text-shadow: 
+    0 0 25px rgba(96, 239, 255, 0.4),
+    0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* ===================================
+   NAVIGATION LINKS CONTAINER
+=================================== */
+.nav-links {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.nav-item-wrapper {
+  position: relative;
+}
+
+/* ===================================
+   LIQUID GLASS NAVIGATION ITEMS
+=================================== */
+.nav-item.liquid-glass {
+  position: relative;
+  color: rgba(255, 255, 255, 0.95);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 40px;
+  overflow: hidden;
+  display: inline-block;
+  cursor: pointer;
+  
+  /* Liquid Glass Effect */
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  
+  /* Smooth oval border */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  
+  /* Depth shadows */
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, background;
+}
+
+.liquid-text {
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Liquid layers for depth */
+.liquid-layer {
+  position: absolute;
+  inset: 0;
+  border-radius: 40px;
+  pointer-events: none;
+  opacity: 0.5;
+  transition: opacity 0.4s ease;
+}
+
+.liquid-layer-1 {
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(167, 139, 255, 0.15) 0%,
+    transparent 60%
+  );
+  filter: blur(8px);
+}
+
+.liquid-layer-2 {
+  background: radial-gradient(
+    circle at 70% 70%,
+    rgba(96, 239, 255, 0.12) 0%,
+    transparent 60%
+  );
+  filter: blur(10px);
+}
+
+.liquid-layer-3 {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    transparent 100%
+  );
+}
+
+/* Glass reflection effect */
+.glass-reflection {
+  position: absolute;
+  inset: 0;
+  border-radius: 40px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.02) 100%
+  );
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Shine effect */
+.liquid-shine {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%) translateY(-100%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+
+/* ===================================
+   HOVER STATE - Liquid Glass
+=================================== */
+.nav-item.liquid-glass:hover {
+  transform: translateY(-2px) scale(1.05);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  border-color: rgba(167, 139, 255, 0.3);
+  
+  box-shadow: 
+    0 8px 24px rgba(96, 239, 255, 0.2),
+    0 0 40px rgba(167, 139, 255, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.nav-item.liquid-glass:hover .liquid-layer-1,
+.nav-item.liquid-glass:hover .liquid-layer-2 {
+  opacity: 1;
+}
+
+.nav-item.liquid-glass:hover .liquid-text {
+  color: #ffffff;
+  text-shadow: 
+    0 0 15px rgba(96, 239, 255, 0.5),
+    0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.nav-item.liquid-glass:hover .liquid-shine {
+  transform: translateX(100%) translateY(100%);
+}
+
+/* ===================================
+   ACTIVE STATE
+=================================== */
+.nav-item.liquid-glass.active {
+  background: rgba(167, 139, 255, 0.15);
+  backdrop-filter: blur(30px) saturate(200%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%);
+  border-color: rgba(167, 139, 255, 0.4);
+  color: #1c1e1c;
+  
+  box-shadow: 
+    0 8px 24px rgba(167, 139, 255, 0.25),
+    0 0 30px rgba(167, 139, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* ===================================
+   LIQUID PAGE TRANSITIONS
+=================================== */
+body.liquid-transition {
+  animation: liquidOut 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+body.liquid-entrance {
+  animation: liquidIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes liquidOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0px);
+  }
+  100% {
+    transform: scale(0.96);
+    opacity: 0;
+    filter: blur(8px);
+  }
+}
+
+@keyframes liquidIn {
+  0% {
+    transform: scale(1.04);
+    opacity: 0;
+    filter: blur(8px);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+/* ===================================
+   MOBILE MENU BUTTON
+=================================== */
+.menu-btn {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1001;
+  padding: 8px;
+  transition: all 0.4s ease;
+}
+
+.menu-btn span {
+  width: 26px;
+  height: 2.5px;
+  background: #fff;
+  border-radius: 3px;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transform-origin: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.menu-btn.active span:nth-child(1) {
+  transform: translateY(7.5px) rotate(45deg);
+}
+
+.menu-btn.active span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.menu-btn.active span:nth-child(3) {
+  transform: translateY(-7.5px) rotate(-45deg);
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+=================================== */
+@media (max-width: 900px) {
+  .navbar {
+    top: 15px;
+    width: 95%;
+    padding: 16px 20px;
+    border-radius: 40px;
+  }
+
+  .navbar.scrolled {
+    padding: 12px 20px;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    
+    /* Mobile liquid glass */
+    background: rgba(10, 10, 20, 0.95);
+    backdrop-filter: blur(50px) saturate(200%);
+    -webkit-backdrop-filter: blur(50px) saturate(200%);
+    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    
+    transform: translateY(-100%);
+    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    pointer-events: none;
+  }
+
+  .nav-links.open {
+    transform: translateY(0);
+    pointer-events: all;
+  }
+
+  .nav-item.liquid-glass {
+    font-size: 1.6rem;
+    padding: 16px 36px;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: slideDownMobile 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .nav-item-wrapper:nth-child(1) .nav-item { animation-delay: 0.1s; }
+  .nav-item-wrapper:nth-child(2) .nav-item { animation-delay: 0.15s; }
+  .nav-item-wrapper:nth-child(3) .nav-item { animation-delay: 0.2s; }
+  .nav-item-wrapper:nth-child(4) .nav-item { animation-delay: 0.25s; }
+  .nav-item-wrapper:nth-child(5) .nav-item { animation-delay: 0.3s; }
+
+  .menu-btn {
+    display: flex;
+  }
+}
+
+@keyframes slideDownMobile {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    top: 10px;
+    padding: 14px 16px;
+    border-radius: 35px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .nav-item.liquid-glass {
+    font-size: 1.4rem;
+    padding: 14px 32px;
+  }
+}
+
+/* ===================================
+   PERFORMANCE OPTIMIZATIONS
+=================================== */
+*,
+*::before,
+*::after {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.navbar,
+.nav-item.liquid-glass {
+  will-change: transform, backdrop-filter;
+}
+
+/* ===================================
+   ACCESSIBILITY
+=================================== */
+.nav-item.liquid-glass:focus-visible {
+  outline: 2px solid rgba(96, 239, 255, 0.6);
+  outline-offset: 4px;
+}
+
+.logo:focus-visible {
+  outline: 2px solid rgba(167, 139, 255, 0.6);
+  outline-offset: 4px;
+}

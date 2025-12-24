@@ -1,0 +1,764 @@
+/* ===================================
+   ABOUT SECTION - MAIN STYLES
+=================================== */
+.about-section {
+  position: relative;
+  min-height: 100vh;
+  background: #000;
+  color: white;
+  padding: 50px 20px;
+  overflow: hidden;
+  animation: fadeInUp 1.2s ease-out forwards;
+  opacity: 0;
+}
+
+/* ===================================
+   SNOWFALL BACKGROUND
+=================================== */
+.snowfall-container {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.snowflake {
+  position: absolute;
+  top: -10px;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.9;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+  animation: fall linear infinite;
+}
+
+/* Snowflake Variations */
+.snowflake-1 {
+  left: 5vw;
+  animation-duration: 15s;
+  animation-delay: 0s;
+  width: 5px;
+  height: 5px;
+  opacity: 0.7;
+}
+.snowflake-2 {
+  left: 10vw;
+  animation-duration: 20s;
+  animation-delay: 2s;
+  width: 4px;
+  height: 4px;
+  opacity: 0.6;
+}
+.snowflake-3 {
+  left: 15vw;
+  animation-duration: 12s;
+  animation-delay: 5s;
+  width: 7px;
+  height: 7px;
+  opacity: 0.8;
+}
+.snowflake-4 {
+  left: 20vw;
+  animation-duration: 18s;
+  animation-delay: 1s;
+  width: 6px;
+  height: 6px;
+  opacity: 0.75;
+}
+.snowflake-5 {
+  left: 25vw;
+  animation-duration: 14s;
+  animation-delay: 8s;
+  width: 5px;
+  height: 5px;
+  opacity: 0.65;
+}
+.snowflake-6 {
+  left: 30vw;
+  animation-duration: 22s;
+  animation-delay: 3s;
+  width: 8px;
+  height: 8px;
+  opacity: 0.9;
+}
+.snowflake-7 {
+  left: 35vw;
+  animation-duration: 16s;
+  animation-delay: 6s;
+  width: 4px;
+  height: 4px;
+  opacity: 0.7;
+}
+.snowflake-8 {
+  left: 40vw;
+  animation-duration: 19s;
+  animation-delay: 4s;
+  width: 6px;
+  height: 6px;
+  opacity: 0.8;
+}
+.snowflake-9 {
+  left: 45vw;
+  animation-duration: 13s;
+  animation-delay: 7s;
+  width: 5px;
+  height: 5px;
+  opacity: 0.75;
+}
+.snowflake-10 {
+  left: 50vw;
+  animation-duration: 17s;
+  animation-delay: 9s;
+  width: 7px;
+  height: 7px;
+  opacity: 0.85;
+}
+.snowflake-11 {
+  left: 55vw;
+  animation-duration: 21s;
+  animation-delay: 2s;
+  width: 6px;
+  height: 6px;
+  opacity: 0.7;
+}
+.snowflake-12 {
+  left: 60vw;
+  animation-duration: 15s;
+  animation-delay: 5s;
+  width: 5px;
+  height: 5px;
+  opacity: 0.65;
+}
+.snowflake-13 {
+  left: 65vw;
+  animation-duration: 18s;
+  animation-delay: 8s;
+  width: 7px;
+  height: 7px;
+  opacity: 0.8;
+}
+.snowflake-14 {
+  left: 70vw;
+  animation-duration: 14s;
+  animation-delay: 1s;
+  width: 4px;
+  height: 4px;
+  opacity: 0.6;
+}
+.snowflake-15 {
+  left: 75vw;
+  animation-duration: 20s;
+  animation-delay: 4s;
+  width: 6px;
+  height: 6px;
+  opacity: 0.75;
+}
+.snowflake-16 {
+  left: 80vw;
+  animation-duration: 16s;
+  animation-delay: 7s;
+  width: 8px;
+  height: 8px;
+  opacity: 0.9;
+}
+.snowflake-17 {
+  left: 85vw;
+  animation-duration: 19s;
+  animation-delay: 3s;
+  width: 5px;
+  height: 5px;
+  opacity: 0.7;
+}
+.snowflake-18 {
+  left: 90vw;
+  animation-duration: 13s;
+  animation-delay: 6s;
+  width: 6px;
+  height: 6px;
+  opacity: 0.8;
+}
+.snowflake-19 {
+  left: 95vw;
+  animation-duration: 17s;
+  animation-delay: 9s;
+  width: 7px;
+  height: 7px;
+  opacity: 0.85;
+}
+.snowflake-20 {
+  left: 8vw;
+  animation-duration: 22s;
+  animation-delay: 2s;
+  width: 5px;
+  height: 5px;
+  opacity: 0.65;
+}
+
+/* ===================================
+   CONTAINER & LAYOUT
+=================================== */
+.about-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ===================================
+   TITLE & SUBTITLE
+=================================== */
+.about-title {
+  font-size: 6rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  text-align: center;
+  letter-spacing: -0.02em;
+  animation: srvFadeInDown 0.8s ease-out;
+}
+
+.about-subtitle {
+  font-size: 1.3rem;
+  opacity: 0.9;
+  margin-bottom: 4rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeInUp 1s ease-out 0.4s backwards;
+}
+
+/* ===================================
+   CONTENT GRID
+=================================== */
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 5rem;
+  align-items: center;
+  animation: fadeInUp 1s ease-out 0.6s backwards;
+}
+
+/* ===================================
+   TEXT SECTION
+=================================== */
+.about-text {
+  text-align: left;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  opacity: 0.92;
+}
+
+.animate-paragraph {
+  opacity: 0;
+  animation: fadeInScale 0.9s ease-out forwards;
+  margin-bottom: 1.5rem;
+}
+
+.animate-paragraph.delay-1 {
+  animation-delay: 0.8s;
+}
+
+.animate-paragraph.delay-2 {
+  animation-delay: 1.1s;
+}
+
+.about-text strong {
+  color: #60efff;
+  font-weight: 600;
+}
+
+/* ===================================
+   STATS SECTION
+=================================== */
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.stat-item {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 2rem 1.5rem;
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  animation: shimmer 3s infinite;
+}
+
+.animate-stat {
+  animation: statPop 0.8s ease-out forwards;
+}
+
+.animate-stat.delay-1 {
+  animation-delay: 0.9s;
+}
+
+.animate-stat.delay-2 {
+  animation-delay: 1.1s;
+}
+
+.animate-stat.delay-3 {
+  animation-delay: 1.3s;
+}
+
+.stat-item:hover {
+  transform: translateY(-15px) scale(1.05);
+  background: rgba(167, 139, 255, 0.15);
+  box-shadow: 0 20px 40px rgba(167, 139, 255, 0.3);
+  border-color: #a78bff;
+}
+
+.stat-number {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #a78bff;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 20px rgba(167, 139, 255, 0.5);
+}
+
+.stat-label {
+  font-size: 1rem;
+  opacity: 0.8;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.blink-247 {
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+/* ===================================
+   MISSION SECTION
+=================================== */
+.about-mission {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 3rem;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  max-width: 900px;
+  margin: 0 auto;
+  opacity: 0;
+}
+
+.animate-mission {
+  animation: fadeInScale 1.2s ease-out 1.4s forwards;
+}
+
+.mission-title {
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  color: #60efff;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ===================================
+   PROGRESS INDICATOR
+=================================== */
+.scratch-progress {
+  margin-bottom: 1.5rem;
+  animation: fadeInScale 0.5s ease-out;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 0.8rem;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #a78bff, #60efff);
+  border-radius: 10px;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px rgba(96, 239, 255, 0.5);
+  animation: progressGlow 1.5s ease-in-out infinite;
+}
+
+.progress-text {
+  font-size: 1rem;
+  color: #60efff;
+  font-weight: 600;
+  animation: pulse 1.5s ease-in-out infinite;
+  text-shadow: 0 0 10px rgba(96, 239, 255, 0.5);
+}
+
+/* ===================================
+   ENHANCED SCRATCH CARD
+=================================== */
+.scratch-card-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 650px;
+  height: 200px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(167, 139, 255, 0.2);
+}
+
+.mission-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem;
+  background: linear-gradient(
+    135deg,
+    rgba(167, 139, 255, 0.12),
+    rgba(96, 239, 255, 0.12)
+  );
+  border-radius: 16px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  filter: blur(8px);
+}
+
+/* Progressive reveal - text becomes visible as you scratch */
+.mission-content.partially-visible {
+  opacity: 0.3;
+  filter: blur(4px);
+  transition: all 0.3s ease;
+}
+
+.mission-content.revealed {
+  opacity: 1;
+  filter: blur(0);
+  animation: revealPulse 1s ease-out;
+}
+
+.mission-text {
+  font-size: 1.2rem;
+  line-height: 1.9;
+  opacity: 0.95;
+  margin: 0;
+  text-align: center;
+}
+
+.scratch-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  transition: opacity 0.6s ease;
+  touch-action: none;
+  user-select: none;
+  box-shadow: 0 10px 30px rgba(167, 139, 255, 0.4);
+  z-index: 10;
+  cursor: none; /* Hide default cursor */
+}
+
+.scratch-canvas.scratching {
+  box-shadow: 0 15px 40px rgba(96, 239, 255, 0.6);
+}
+
+/* ===================================
+   HAND CURSOR EFFECT
+=================================== */
+.hand-cursor {
+  position: absolute;
+  pointer-events: none;
+  z-index: 20;
+  font-size: 36px;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  animation: handFloat 2s ease-in-out infinite;
+}
+
+.hand-cursor.scratching {
+  animation: handScratch 0.1s ease-in-out infinite;
+  transform: translate(-50%, -50%) rotate(-15deg) scale(0.9);
+}
+
+/* ===================================
+   REVEAL MESSAGE
+=================================== */
+.reveal-message {
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #60efff;
+  animation: fadeInScale 0.8s ease-out, float 2s ease-in-out infinite;
+  text-shadow: 0 0 20px rgba(96, 239, 255, 0.6);
+}
+
+/* ===================================
+   KEYFRAME ANIMATIONS
+=================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes statPop {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    text-shadow: 0 0 20px rgba(167, 139, 255, 0.5),
+      0 0 30px rgba(167, 139, 255, 0.3);
+    color: #a78bff;
+  }
+  50% {
+    text-shadow: 0 0 30px rgba(96, 239, 255, 0.9),
+      0 0 50px rgba(96, 239, 255, 0.6), 0 0 70px rgba(96, 239, 255, 0.4);
+    color: #60efff;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes revealPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 0.9;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
+
+@keyframes progressGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(96, 239, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(96, 239, 255, 0.8),
+      0 0 30px rgba(167, 139, 255, 0.4);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes handFloat {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) translateY(0px);
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(-5px);
+  }
+}
+
+@keyframes handScratch {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) rotate(-15deg) scale(0.9);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(-20deg) scale(0.85);
+  }
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+=================================== */
+@media (max-width: 968px) {
+  .about-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 3rem;
+  }
+
+  .about-text {
+    text-align: center;
+  }
+
+  .about-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .scratch-card-wrapper {
+    height: 180px;
+  }
+
+  .mission-text {
+    font-size: 1.1rem;
+  }
+
+  .hand-cursor {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-title {
+    font-size: 2.5rem;
+  }
+
+  .about-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .about-stats {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .stat-item {
+    padding: 1.5rem;
+  }
+
+  .stat-number {
+    font-size: 2.2rem;
+  }
+
+  .about-mission {
+    padding: 2rem;
+  }
+
+  .mission-title {
+    font-size: 1.8rem;
+  }
+
+  .scratch-card-wrapper {
+    height: 220px;
+  }
+
+  .mission-content {
+    padding: 1.5rem;
+  }
+
+  .mission-text {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .reveal-message {
+    font-size: 1.2rem;
+  }
+
+  .hand-cursor {
+    font-size: 28px;
+  }
+
+  .progress-text {
+    font-size: 0.9rem;
+  }
+}
+
+/* ===================================
+   ACCESSIBILITY
+=================================== */
+@media (prefers-reduced-motion: reduce) {
+  .hand-cursor {
+    animation: none;
+  }
+
+  .progress-bar-fill {
+    animation: none;
+  }
+}

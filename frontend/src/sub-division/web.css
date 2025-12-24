@@ -1,0 +1,499 @@
+/* ===================================
+   WEB SECTION
+=================================== */
+.web-section {
+  position: relative;
+  min-height: 100vh;
+  background: #000000;
+  padding: 80px 20px;
+  overflow: hidden;
+}
+
+/* ===================================
+   SNOWFALL BACKGROUND
+=================================== */
+.snowfall-wrapper {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ===================================
+   CONTAINER
+=================================== */
+.web-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ===================================
+   HEADER
+=================================== */
+.web-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  animation: fadeInDown 1s ease-out;
+}
+
+.web-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, #a78bff, #60efff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientFlow 3s ease infinite;
+}
+
+.web-subtitle {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ===================================
+   CARDS GRID
+=================================== */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 20px 0;
+}
+
+/* ===================================
+   WEB CARD
+=================================== */
+.web-card {
+  position: relative;
+  border-radius: 24px;
+  padding: 0;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  animation: cardSlideUp 0.8s ease-out backwards;
+  height: 400px;
+}
+
+.web-card:nth-child(1) { animation-delay: 0.1s; }
+.web-card:nth-child(2) { animation-delay: 0.2s; }
+.web-card:nth-child(3) { animation-delay: 0.3s; }
+.web-card:nth-child(4) { animation-delay: 0.4s; }
+
+.web-card.expanded {
+  height: auto;
+  min-height: 600px;
+  transform: scale(1.02);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+/* ===================================
+   CARD HEADER
+=================================== */
+.card-header {
+  position: relative;
+  z-index: 3;
+  padding: 2rem 2rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  transition: all 0.3s ease;
+}
+
+.web-card:hover .card-title {
+  transform: translateX(5px);
+}
+
+/* ===================================
+   EXPAND BUTTON
+=================================== */
+.expand-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgb(255, 255, 255);
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  flex-shrink: 0;
+}
+
+.expand-btn:hover {
+  background: rgb(255, 255, 255);
+  border-color: rgba(0, 0, 0, 0.4);
+  transform: scale(1.1);
+}
+
+.expand-icon {
+  color: #1a1a1a;
+  transition: transform 0.4s ease;
+}
+
+.expand-icon.rotated {
+  transform: rotate(45deg);
+}
+
+/* ===================================
+   CARD IMAGE
+=================================== */
+.card-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  margin: 0 0 1rem 0;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+  filter: brightness(0.9);
+}
+
+.web-card:hover .card-image {
+  transform: scale(1.1);
+  filter: brightness(1);
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  pointer-events: none;
+}
+
+/* ===================================
+   CARD CONTENT (EXPANDED STATE)
+=================================== */
+.card-content {
+  padding: 0 2rem 2rem;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.web-card.expanded .card-content {
+  max-height: 1000px;
+  opacity: 1;
+  animation: contentFadeIn 0.6s ease 0.2s backwards;
+}
+
+.card-description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+/* ===================================
+   FEATURES SECTION
+=================================== */
+.card-features {
+  margin-bottom: 2rem;
+}
+
+.features-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.95rem;
+  color: #ffffff;
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: slideInFeature 0.5s ease forwards;
+}
+
+.web-card.expanded .feature-item:nth-child(1) { animation-delay: 0.3s; }
+.web-card.expanded .feature-item:nth-child(2) { animation-delay: 0.4s; }
+.web-card.expanded .feature-item:nth-child(3) { animation-delay: 0.5s; }
+.web-card.expanded .feature-item:nth-child(4) { animation-delay: 0.6s; }
+
+.feature-icon {
+  width: 24px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+/* ===================================
+   LEARN MORE BUTTON
+=================================== */
+.learn-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.web-card.expanded .learn-more-btn {
+  animation: buttonFadeUp 0.5s ease 0.7s forwards;
+}
+
+.learn-more-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.learn-more-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.learn-more-btn:hover svg {
+  transform: translateX(4px);
+}
+
+/* ===================================
+   ANIMATIONS
+=================================== */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes contentFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFeature {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes buttonFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientFlow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* ===================================
+   HOVER GLOW EFFECT
+=================================== */
+.web-card::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    135deg,
+    transparent,
+    rgba(167, 139, 255, 0.4),
+    transparent
+  );
+  border-radius: 24px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.web-card:hover::before {
+  opacity: 1;
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+=================================== */
+@media (max-width: 1200px) {
+  .cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 968px) {
+  .web-title {
+    font-size: 2.5rem;
+  }
+
+  .web-subtitle {
+    font-size: 1rem;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .web-card {
+    height: 380px;
+  }
+
+  .web-card.expanded {
+    min-height: 550px;
+  }
+}
+
+@media (max-width: 640px) {
+  .web-section {
+    padding: 60px 15px;
+  }
+
+  .web-header {
+    margin-bottom: 3rem;
+  }
+
+  .web-title {
+    font-size: 2rem;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .web-card {
+    height: 400px;
+  }
+
+  .card-header {
+    padding: 1.5rem 1.5rem 1rem;
+  }
+
+  .card-title {
+    font-size: 1.6rem;
+  }
+
+  .expand-btn {
+    width: 42px;
+    height: 42px;
+  }
+
+  .card-content {
+    padding: 0 1.5rem 1.5rem;
+  }
+
+  .features-title {
+    font-size: 1.1rem;
+  }
+
+  .feature-item {
+    font-size: 0.9rem;
+  }
+}
+
+/* ===================================
+   SMOOTH SCROLLING
+=================================== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===================================
+   ACCESSIBILITY
+=================================== */
+.expand-btn:focus-visible {
+  outline: 2px solid #60efff;
+  outline-offset: 3px;
+}
+
+.learn-more-btn:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 3px;
+}
+
+/* ===================================
+   PRINT STYLES
+=================================== */
+@media print {
+  .snowfall-wrapper {
+    display: none;
+  }
+
+  .web-card {
+    page-break-inside: avoid;
+  }
+}

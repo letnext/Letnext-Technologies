@@ -1,0 +1,723 @@
+/* ===================================
+   GLOBAL PERFORMANCE OPTIMIZATIONS
+=================================== */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===================================
+   HOME CONTAINER
+=================================== */
+.home-container {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(circle at top, #000000, #000);
+}
+
+/* ===================================
+   SNOW CANVAS - HARDWARE ACCELERATED
+=================================== */
+.snow-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* ===================================
+   MIST CANVAS
+=================================== */
+.mist-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  animation: mistReveal 4s ease-in-out forwards;
+  will-change: opacity;
+}
+
+@keyframes mistReveal {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ===================================
+   HERO OVERLAY
+=================================== */
+.hero-overlay {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.75)
+  );
+  z-index: 1;
+  transition: opacity 1s ease-out;
+}
+
+.hero-overlay.fade-out {
+  opacity: 0;
+  animation: contentDissolve 1.5s ease-out forwards;
+}
+
+@keyframes contentDissolve {
+  0% {
+    opacity: 1;
+    filter: blur(0px);
+    transform: scale(1) translateZ(0);
+  }
+  50% {
+    opacity: 0.5;
+    filter: blur(8px);
+    transform: scale(1.05) translateZ(0);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(20px);
+    transform: scale(1.1) translateZ(0);
+  }
+}
+
+/* ===================================
+   HERO CONTENT
+=================================== */
+.hero-content {
+  text-align: center;
+  color: white;
+  max-width: 900px;
+  z-index: 10;
+  animation: heroEntrance 1.2s ease-out;
+  position: relative;
+}
+
+@keyframes heroEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) translateZ(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+  }
+}
+
+/* ===================================
+   HERO TITLE - PURE WHITE WITH GLOW
+=================================== */
+.hero-title {
+  font-size: 4.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  letter-spacing: -2px;
+  color: #ffffff;
+  transition: all 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-style: preserve-3d;
+  animation: titleFloat 3s ease-in-out infinite;
+  position: relative;
+  overflow: visible;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8),
+    0 0 40px rgba(255, 255, 255, 0.5), 0 0 60px rgba(255, 255, 255, 0.3),
+    0 10px 30px rgba(0, 0, 0, 0.4);
+  will-change: transform, text-shadow;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Each word with staggered reveal */
+.title-word {
+  display: inline-block;
+  color: #ffffff;
+  animation: wordReveal 0.8s ease-out backwards;
+  animation-delay: calc(var(--word-index) * 0.2s);
+  position: relative;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+@keyframes wordReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) rotateX(-90deg) translateZ(0);
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg) translateZ(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes titleFloat {
+  0%,
+  100% {
+    transform: translateY(0px) translateZ(0);
+  }
+  50% {
+    transform: translateY(-10px) translateZ(0);
+  }
+}
+
+/* Animated glow effect behind title */
+.hero-title::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(200, 220, 255, 0.1) 50%,
+    transparent 70%
+  );
+  animation: pulseGlow 3s ease-in-out infinite;
+  z-index: -1;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+/* Shimmer effect across title */
+.hero-title::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 150%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: shimmer 4s infinite;
+  pointer-events: none;
+  will-change: left;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -150%;
+  }
+  50%,
+  100% {
+    left: 150%;
+  }
+}
+
+/* ===================================
+   TYPEWRITER SUBTITLE
+=================================== */
+.hero-subtitle {
+  font-size: 1.35rem;
+  line-height: 1.8;
+  opacity: 0.9;
+  margin-bottom: 3rem;
+  color: #e0e0e0;
+  min-height: 3rem;
+  position: relative;
+  transform: translateZ(0);
+}
+
+.cursor-blink {
+  display: inline-block;
+  margin-left: 3px;
+  animation: blink 1s step-end infinite;
+  color: #ffffff;
+  font-weight: 300;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ===================================
+   ENHANCED READ MORE BUTTON
+=================================== */
+.read-more-btn {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 14px 40px;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  backdrop-filter: blur(10px);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+  animation: buttonFadeIn 1.8s ease-out 3s backwards;
+  z-index: 1;
+  will-change: transform, box-shadow;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+@keyframes buttonFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9) translateZ(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) translateZ(0);
+  }
+}
+
+.read-more-btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+  z-index: -1;
+  will-change: width, height;
+}
+
+.read-more-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.read-more-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.25),
+    0 0 50px rgba(200, 220, 255, 0.2), inset 0 0 20px rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px) scale(1.05) translateZ(0);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.read-more-btn:active {
+  transform: translateY(-1px) scale(1.02) translateZ(0);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  transition: all 0.1s ease;
+}
+
+/* Button text */
+.btn-text {
+  position: relative;
+  z-index: 2;
+  transition: letter-spacing 0.3s ease;
+  pointer-events: none;
+}
+
+.read-more-btn:hover .btn-text {
+  letter-spacing: 1px;
+}
+
+/* ===================================
+   ENHANCED ARROW ANIMATION
+=================================== */
+.arrow {
+  font-size: 1.5rem;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.read-more-btn:hover .arrow {
+  transform: translateX(8px) translateZ(0);
+  animation: arrowPulse 1s ease-in-out infinite;
+}
+
+@keyframes arrowPulse {
+  0%,
+  100% {
+    transform: translateX(8px) scale(1) translateZ(0);
+  }
+  50% {
+    transform: translateX(14px) scale(1.2) translateZ(0);
+  }
+}
+
+/* ===================================
+   BUTTON GLOW EFFECT
+=================================== */
+.btn-glow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: left 0.5s ease;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.read-more-btn:hover .btn-glow {
+  left: 100%;
+  transition: left 0.7s ease;
+}
+
+/* ===================================
+   MAGNETIC BUTTON BORDER GLOW
+=================================== */
+.magnetic-btn::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 50px;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(200, 220, 255, 0.15),
+    rgba(150, 180, 255, 0.15),
+    rgba(200, 220, 255, 0.15),
+    rgba(255, 255, 255, 0.1)
+  );
+  background-size: 200% 200%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.magnetic-btn:hover::after {
+  opacity: 1;
+  animation: borderGlow 3s linear infinite;
+}
+
+@keyframes borderGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ===================================
+   BUTTON PULSE ANIMATION
+=================================== */
+.read-more-btn:hover {
+  animation: buttonPulse 2s ease-in-out infinite;
+}
+
+@keyframes buttonPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.25),
+      0 0 50px rgba(200, 220, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(255, 255, 255, 0.35),
+      0 0 70px rgba(200, 220, 255, 0.3), 0 0 100px rgba(150, 180, 255, 0.15);
+  }
+}
+
+/* ===================================
+   FLOATING PARTICLES BACKGROUND
+=================================== */
+.hero-content::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(100, 150, 255, 0.03) 0%,
+    transparent 70%
+  );
+  animation: floatParticles 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes floatParticles {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    opacity: 0.5;
+  }
+  25% {
+    transform: translate(-45%, -55%) scale(1.1) rotate(90deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2) rotate(180deg);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translate(-55%, -45%) scale(1.1) rotate(270deg);
+    opacity: 0.7;
+  }
+}
+
+/* ===================================
+   DECORATIVE LINE GLOW
+=================================== */
+.hero-content::after {
+  content: "";
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    rgba(200, 220, 255, 0.5),
+    rgba(150, 180, 255, 0.5),
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: lineGlow 3s ease-in-out infinite;
+}
+
+@keyframes lineGlow {
+  0%,
+  100% {
+    opacity: 0.3;
+    width: 60%;
+  }
+  50% {
+    opacity: 0.8;
+    width: 80%;
+  }
+}
+
+/* ===================================
+   SPARKLE ANIMATION ON BUTTON
+=================================== */
+.read-more-btn::after {
+  content: "✨";
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 1rem;
+  opacity: 0;
+  animation: sparkle 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.read-more-btn:hover::after {
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+=================================== */
+@media (max-width: 968px) {
+  .hero-title {
+    font-size: 3.5rem;
+    letter-spacing: -1px;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+    padding: 0 1rem;
+  }
+
+  .read-more-btn {
+    padding: 12px 35px;
+    font-size: 1rem;
+  }
+
+  .hero-content::before {
+    width: 450px;
+    height: 450px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 3rem;
+    letter-spacing: -0.5px;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .read-more-btn {
+    padding: 12px 30px;
+    font-size: 0.95rem;
+  }
+
+  .hero-content {
+    padding: 0 1.5rem;
+  }
+
+  .hero-content::before {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.5rem;
+    letter-spacing: 0;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .read-more-btn {
+    padding: 10px 25px;
+    font-size: 0.9rem;
+    gap: 8px;
+  }
+
+  .arrow {
+    font-size: 1.3rem;
+  }
+
+  .hero-content::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  .hero-content::after {
+    bottom: -30px;
+    width: 70%;
+  }
+}
+
+/* ===================================
+   REDUCED MOTION SUPPORT
+=================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .hero-title,
+  .title-word {
+    animation: none;
+  }
+
+  .cursor-blink {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* ===================================
+   PAGE LOAD ANIMATION
+=================================== */
+.home-container.loaded {
+  animation: pageLoad 1s ease-out forwards;
+}
+
+@keyframes pageLoad {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* ===================================
+   PRINT STYLES
+=================================== */
+@media print {
+  .snow-canvas,
+  .mist-canvas,
+  .hero-content::before,
+  .hero-content::after,
+  .read-more-btn::after {
+    display: none;
+  }
+
+  .hero-title {
+    animation: none;
+    text-shadow: none;
+  }
+
+  .read-more-btn {
+    border: 2px solid #000;
+    color: #000;
+  }
+}
