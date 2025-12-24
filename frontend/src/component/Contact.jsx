@@ -5,6 +5,9 @@ import { MdLocalPhone } from "react-icons/md";
 import "../styles/contact.css";
 import Footer from "./Footer";
 
+
+const BASE_URL=import.meta.env.VITE_BASE_URL;
+
 const Contact = () => {
   const snowRef = useRef(null);
   const successParticlesRef = useRef(null);
@@ -170,7 +173,7 @@ const Contact = () => {
     setFormMessage("");
 
     try {
-      const res = await fetch("http://localhost:5000/api/contact/send", {
+      const res = await fetch(`${BASE_URL}/api/contact/send`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

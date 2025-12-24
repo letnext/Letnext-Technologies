@@ -11,7 +11,9 @@ import {
 } from "react-icons/io5";
 import "../styles/chatbot.css";
 
-const API_URL = "http://localhost:5000/api/chatbot";
+const BASE_URL=import.meta.env.VITE_BASE_URL;
+
+const API_URL = `${BASE_URL}/api/chatbot`;
 const SESSION_ID = `session-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
 const WHATSAPP_NUMBER = "919940847940";
 
