@@ -1,9 +1,9 @@
-// Home.jsx — Smooth & Optimized with Pure White Title
+// Home.jsx — Smooth & Optimized with Pure White Title + Services Section
 import { useRef, useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-// import Service from "../component/Service";
 import "../styles/home.css";
 import { create } from "zustand";
+import Footer from "../component/Footer";
 
 /* ======================
    GLOBAL STORE
@@ -248,6 +248,154 @@ const TypewriterText = ({ text, speed = 25, delay = 800 }) => {
 };
 
 /* ======================
+   SERVICES SECTION COMPONENT
+====================== */
+const ServicesSection = () => {
+  const [visibleItems, setVisibleItems] = useState([]);
+  const sectionRef = useRef(null);
+  const observerRef = useRef(null);
+  const navigate = useNavigate();
+
+  const services = [
+    {
+      id: 1,
+      title: "Digital Marketing",
+      tag: "Sales • Support",
+      description: "Manage leads, deals and customer communication from a single, unified dashboard.",
+      features: ["SEO Optimization", "Social Media", "Analytics", "Content Strategy"],
+      image: "/lnt.png",
+      link: "/digital",
+      position: "left"
+    },
+    {
+      id: 2,
+      title: "Web Development",
+      tag: "Java • Python • MERN Stack",
+      description: "Plan, execute and track multi-channel campaigns with real-time performance insights.",
+      features: ["Responsive Design", "Full Stack", "E-commerce", "PWA"],
+      image: "./hotel.png",
+      link: "/web",
+      position: "right"
+    },
+    {
+      id: 3,
+      title: "Technical Trainer",
+      tag: "Java • Python • C • C++ • MERN Stack",
+      description: "Monitor case and next hearing smart alerts and deep observability.",
+      features: ["Expert Training", "Live Projects", "Certification", "Placement Support"],
+      image: "./advocate.png",
+      link: "/technical",
+      position: "left"
+    },
+    {
+      id: 4,
+      title: "IoT Device Hub",
+      tag: "Edge • Automation",
+      description: "Onboard, control and analyze thousands of devices securely from a single console.",
+      features: ["Device Control", "Real-time Monitoring", "Cloud Integration", "Security"],
+      image: "./iot1.png",
+      link: "/iothub",
+      position: "right"
+    },
+  ];
+
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(entry.target.dataset.index);
+            setVisibleItems((prev) => {
+              if (!prev.includes(index)) {
+                return [...prev, index];
+              }
+              return prev;
+            });
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "0px 0px -100px 0px"
+      }
+    );
+
+    const items = sectionRef.current?.querySelectorAll('.service-item');
+    items?.forEach((item) => observerRef.current?.observe(item));
+
+    return () => {
+      observerRef.current?.disconnect();
+    };
+  }, []);
+
+  const handleServiceClick = (link) => {
+    navigate(link);
+    window.scrollTo(0, 0);
+  };
+
+  return (
+    <section className="services-section" ref={sectionRef}>
+      <div className="services-container">
+        <div className="services-header">
+          <h2 className="services-title">What We Do</h2>
+          <p className="services-subtitle">
+            Transforming ideas into digital reality through innovation, creativity, and technical excellence
+          </p>
+        </div>
+
+        <div className="services-grid">
+          {services.map((service, index) => (
+            <div
+              key={service.id}
+              className={`service-item ${service.position} ${
+                visibleItems.includes(index) ? 'visible' : ''
+              }`}
+              data-index={index}
+              onClick={() => handleServiceClick(service.link)}
+              style={{ cursor: 'pointer' }}
+            >
+              <div className="service-image-wrapper">
+                <div className="service-image-container">
+                  <img 
+                    src={service.image} 
+                    alt={service.title}
+                    className="service-image"
+                    loading="lazy"
+                  />
+                  <div className="image-overlay"></div>
+                </div>
+              </div>
+
+              <div className="service-content-wrapper">
+                <div className="service-content">
+                  <div className="service-number">0{service.id}</div>
+                  <h3 className="service-heading">{service.title}</h3>
+                  <p className="service-description">{service.description}</p>
+                  
+                  <ul className="service-features">
+                    {service.features.map((feature, idx) => (
+                      <li key={idx} className="service-feature">
+                        <span className="feature-icon">→</span>
+                        <span className="feature-text">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <button className="service-btn">
+                    <span>Learn More</span>
+                    <span className="btn-arrow">→</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+/* ======================
    MAIN HOME COMPONENT
 ====================== */
 export default function Home() {
@@ -333,7 +481,9 @@ export default function Home() {
         </div>
       </div>
 
-      {/* <Service /> */}
+      {/* Services Section */}
+      <ServicesSection />
+      <Footer/>
     </section>
   );
 }

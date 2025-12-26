@@ -1,16 +1,303 @@
-// Service.jsx - Optimized for Performance
+// Service.jsx - Enhanced with React Icons and Animated Stats
 import { useEffect, useRef, useState, useCallback } from "react";
 import * as THREE from "three";
 import "../styles/service.css";
-// import Product from "../component/Product";
+import Footer from "../component/Footer";
+import {
+  FaChartLine,
+  FaChartBar,
+  FaRocket,
+  FaLightbulb,
+  FaMobileAlt,
+  FaSyncAlt,
+  FaPaintBrush,
+  FaBolt,
+  FaLaptopCode,
+  FaBullseye,
+  FaCog,
+  FaLock,
+  FaSearch,
+  FaPalette,
+  FaRuler,
+  FaGlobe,
+  FaWifi,
+  FaRobot,
+  FaCloud
+} from "react-icons/fa";
+import { FaBullseye as FaTarget } from "react-icons/fa6";
 
 const services = [
-  { name: "Digital Marketing", img: "/dig.png", color: "#FF6B6B" },
-  { name: "App Development", img: "/app.png", color: "#4ECDC4" },
-  { name: "Web Development", img: "/web.png", color: "#45B7D1" },
-  { name: "UI / UX Designing", img: "/uiux.png", color: "#96CEB4" },
-  { name: "Internet of Things", img: "./iot.png", color: "#FFEAA7" },
+  {
+    name: "Digital Marketing",
+    img: "/dig.png",
+    color: "#FF6B6B",
+    shortDesc: "Innovative solutions tailored to your needs",
+    fullDesc: "Elevate your brand with data-driven digital marketing strategies that deliver measurable results and sustainable growth.",
+    features: [
+      {
+        icon: FaTarget,
+        title: "Strategic Planning",
+        desc: "Comprehensive market analysis and targeted campaign development"
+      },
+      {
+        icon: FaChartBar,
+        title: "Analytics & Insights",
+        desc: "Real-time performance tracking and ROI optimization"
+      },
+      {
+        icon: FaRocket,
+        title: "Growth Marketing",
+        desc: "Scalable strategies to accelerate your business expansion"
+      },
+      {
+        icon: FaLightbulb,
+        title: "Creative Content",
+        desc: "Engaging multimedia content that resonates with your audience"
+      }
+    ],
+    services: [
+      "Search Engine Optimization (SEO)",
+      "Pay-Per-Click Advertising (PPC)",
+      "Social Media Marketing",
+      "Email Marketing Campaigns",
+      "Content Marketing Strategy",
+      "Conversion Rate Optimization"
+    ],
+    stats: [
+      { label: "Client", value: "50+" },
+      { label: "Client Satisfaction", value: "98%" },
+      { label: "Campaigns Launched", value: "50+" }
+    ]
+  },
+  {
+    name: "App Development",
+    img: "/app.png",
+    color: "#4ECDC4",
+    shortDesc: "Innovative solutions tailored to your needs",
+    fullDesc: "Transform your ideas into powerful mobile applications with cutting-edge technology and user-centric design.",
+    features: [
+      {
+        icon: FaMobileAlt,
+        title: "Native Development",
+        desc: "High-performance iOS and Android applications"
+      },
+      {
+        icon: FaSyncAlt,
+        title: "Cross-Platform",
+        desc: "React Native and Flutter for efficient multi-platform deployment"
+      },
+      {
+        icon: FaPaintBrush,
+        title: "UI/UX Excellence",
+        desc: "Intuitive interfaces that users love to interact with"
+      },
+      {
+        icon: FaBolt,
+        title: "Performance Optimization",
+        desc: "Lightning-fast apps with minimal resource consumption"
+      }
+    ],
+    services: [
+      "iOS App Development",
+      "Android App Development",
+      "React Native Development",
+      "Flutter Development",
+      "App Maintenance & Support",
+      "App Store Optimization"
+    ],
+    stats: [
+      { label: "Apps Delivered", value: "20+" },
+      { label: "Active Users", value: "2M+" },
+      { label: "App Store Rating", value: "4.8★" }
+    ]
+  },
+  {
+    name: "Web Development",
+    img: "/web.png",
+    color: "#45B7D1",
+    shortDesc: "Innovative solutions tailored to your needs",
+    fullDesc: "Build stunning, responsive websites that captivate audiences and drive business growth with modern web technologies.",
+    features: [
+      {
+        icon: FaLaptopCode,
+        title: "Full-Stack Development",
+        desc: "End-to-end web solutions from frontend to backend"
+      },
+      {
+        icon: FaBullseye,
+        title: "Responsive Design",
+        desc: "Seamless experience across all devices and screen sizes"
+      },
+      {
+        icon: FaCog,
+        title: "Custom Solutions",
+        desc: "Tailored web applications built for your specific needs"
+      },
+      {
+        icon: FaLock,
+        title: "Security First",
+        desc: "Enterprise-grade security and data protection"
+      }
+    ],
+    services: [
+      "Custom Web Applications",
+      "E-commerce Solutions",
+      "Content Management Systems",
+      "Progressive Web Apps (PWA)",
+      "API Development & Integration",
+      "Web Performance Optimization"
+    ],
+    stats: [
+      { label: "Websites Launched", value: "50+" },
+      { label: "Uptime Guarantee", value: "99.9%" },
+      { label: "Page Load Speed", value: "<2s" }
+    ]
+  },
+  {
+    name: "UI / UX Designing",
+    img: "/uiux.png",
+    color: "#96CEB4",
+    shortDesc: "Innovative solutions tailored to your needs",
+    fullDesc: "Create memorable digital experiences through thoughtful design that combines aesthetics with functionality.",
+    features: [
+      {
+        icon: FaSearch,
+        title: "User Research",
+        desc: "Deep understanding of user behavior and preferences"
+      },
+      {
+        icon: FaPalette,
+        title: "Visual Design",
+        desc: "Beautiful interfaces that reflect your brand identity"
+      },
+      {
+        icon: FaRuler,
+        title: "Design Systems",
+        desc: "Scalable component libraries for consistent experiences"
+      }
+    ],
+    services: [
+      "User Experience (UX) Design",
+      "User Interface (UI) Design",
+      "Wireframing & Prototyping",
+      "Design System Development",
+      "Interaction Design",
+      "Accessibility Consulting"
+    ],
+    stats: [
+      { label: "Design Projects", value: "50+" },
+      { label: "User Satisfaction", value: "96%" },
+      { label: "Design ", value: "15+" }
+    ]
+  },
+  {
+    name: "Internet of Things",
+    img: "./iot.png",
+    color: "#FFEAA7",
+    shortDesc: "Innovative solutions tailored to your needs",
+    fullDesc: "Connect the physical and digital worlds with intelligent IoT solutions that drive efficiency and innovation.",
+    features: [
+      {
+        icon: FaGlobe,
+        title: "Device Integration",
+        desc: "Seamless connectivity for smart devices and sensors"
+      },
+      {
+        icon: FaWifi,
+        title: "Real-time Monitoring",
+        desc: "Live data streaming and instant alerts"
+      },
+      {
+        icon: FaRobot,
+        title: "AI & Automation",
+        desc: "Intelligent systems that learn and adapt"
+      },
+      {
+        icon: FaCloud,
+        title: "Cloud Infrastructure",
+        desc: "Scalable cloud solutions for IoT data management"
+      }
+    ],
+    services: [
+      "Smart Home Solutions",
+      "Industrial IoT Systems",
+      "Sensor Network Design",
+      "IoT Security Implementation",
+      "Data Analytics & Visualization",
+      "Edge Computing Solutions"
+    ],
+    stats: [
+      { label: "Connected Devices", value: "50+" },
+      { label: "Data Points Daily", value: "10+" },
+      { label: "System Reliability", value: "99.8%" }
+    ]
+  },
 ];
+
+// Counter Animation Component
+function AnimatedCounter({ value, duration = 2000 }) {
+  const [count, setCount] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const elementRef = useRef(null);
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated.current) {
+          setIsVisible(true);
+          hasAnimated.current = true;
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => {
+      if (elementRef.current) {
+        observer.unobserve(elementRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    // Extract numeric value
+    const numericValue = parseFloat(value.replace(/[^0-9.]/g, ''));
+    const suffix = value.replace(/[0-9.]/g, '');
+
+    if (isNaN(numericValue)) {
+      setCount(value);
+      return;
+    }
+
+    let startTime;
+    const animate = (currentTime) => {
+      if (!startTime) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+
+      // Easing function for smooth animation
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      const currentCount = Math.floor(easeOutQuart * numericValue);
+
+      setCount(currentCount + suffix);
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        setCount(value);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }, [isVisible, value, duration]);
+
+  return <div ref={elementRef}>{count}</div>;
+}
 
 export default function Service() {
   const snowRef = useRef(null);
@@ -20,6 +307,7 @@ export default function Service() {
   const rendererRef = useRef(null);
   const sceneRef = useRef(null);
   const animationRef = useRef(null);
+  const sectionRefs = useRef([]);
 
   // Auto-scroll functionality
   useEffect(() => {
@@ -43,7 +331,7 @@ export default function Service() {
 
     const scene = new THREE.Scene();
     sceneRef.current = scene;
-    
+
     const camera = new THREE.PerspectiveCamera(
       75,
       window.innerWidth / window.innerHeight,
@@ -55,15 +343,14 @@ export default function Service() {
     const renderer = new THREE.WebGLRenderer({
       canvas,
       alpha: true,
-      antialias: false, // Disable for better performance
+      antialias: false,
       powerPreference: "high-performance",
     });
     rendererRef.current = renderer;
-    
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5)); // Limit pixel ratio
 
-    // Reduced particle count for better performance
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+
     const snowCount = 1500;
     const positions = new Float32Array(snowCount * 3);
     const velocities = new Float32Array(snowCount);
@@ -99,19 +386,17 @@ export default function Service() {
 
     const animate = () => {
       animationRef.current = requestAnimationFrame(animate);
-      
+
       const currentTime = performance.now();
       const deltaTime = currentTime - lastTime;
 
-      // Frame rate limiting
       if (deltaTime < frameInterval) return;
-      
+
       lastTime = currentTime - (deltaTime % frameInterval);
       time += 0.01;
 
       const pos = geometry.attributes.position.array;
 
-      // Optimized particle update loop
       for (let i = 0; i < snowCount; i++) {
         const idx = i * 3;
         pos[idx] += Math.sin(time + swayOffsets[i]) * 0.01;
@@ -133,7 +418,7 @@ export default function Service() {
     const onResize = () => {
       const width = window.innerWidth;
       const height = window.innerHeight;
-      
+
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       renderer.setSize(width, height);
@@ -146,12 +431,11 @@ export default function Service() {
         cancelAnimationFrame(animationRef.current);
       }
       window.removeEventListener("resize", onResize);
-      
-      // Proper cleanup
+
       geometry.dispose();
       material.dispose();
       renderer.dispose();
-      
+
       if (sceneRef.current) {
         sceneRef.current.clear();
       }
@@ -163,6 +447,16 @@ export default function Service() {
     if (autoScrollRef.current) {
       clearInterval(autoScrollRef.current);
     }
+
+    // Scroll to the detail section
+    setTimeout(() => {
+      if (sectionRefs.current[index]) {
+        sectionRefs.current[index].scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }, 100);
   }, []);
 
   const getCardStyle = useCallback((index) => {
@@ -267,7 +561,7 @@ export default function Service() {
                     />
                     <h3 className="srv-card-heading">{service.name}</h3>
                     <p className={`srv-card-text ${isActive ? 'srv-card-text-show' : ''}`}>
-                      Innovative solutions tailored to your needs
+                      {service.shortDesc}
                     </p>
                   </div>
 
@@ -297,12 +591,127 @@ export default function Service() {
               backgroundColor: services[activeIndex].color,
               boxShadow: `0 10px 40px ${services[activeIndex].color}40`,
             }}
+            onClick={() => handleCardClick(activeIndex)}
           >
-            {services[activeIndex].name}
+            Explore {services[activeIndex].name}
           </button>
         </div>
       </div>
-      {/* <Product /> */}
+
+      {/* Detailed Service Sections */}
+      <div className="srv-details-wrapper">
+        {services.map((service, index) => (
+          <section
+            key={index}
+            ref={(el) => (sectionRefs.current[index] = el)}
+            className="srv-detail-section"
+            style={{
+              background: `linear-gradient(135deg, ${service.color}08 0%, transparent 100%)`
+            }}
+          >
+            <div className="srv-detail-container">
+              {/* Header */}
+              <div className="srv-detail-header">
+                <div className="srv-detail-icon" style={{ color: service.color }}>
+                  {service.features[0].icon}
+                </div>
+
+                <h2 className="srv-detail-title">{service.name}</h2>
+                <p className="srv-detail-desc">{service.fullDesc}</p>
+              </div>
+
+              {/* Features Grid */}
+              <div className="srv-features-grid">
+                {service.features.map((feature, idx) => (
+                  <div
+                    key={idx}
+                    className="srv-feature-card"
+                    style={{
+                      animationDelay: `${idx * 0.1}s`
+                    }}
+                  >
+                    <div
+                      className="srv-feature-icon"
+                      style={{ backgroundColor: `${service.color}20` }}
+                    >
+                      <span style={{ color: service.color }}>
+                        {<feature.icon />}
+                      </span>
+                    </div>
+                    <h3 className="srv-feature-title">{feature.title}</h3>
+                    <p className="srv-feature-desc">{feature.desc}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Services List & Stats */}
+              <div className="srv-content-grid">
+                {/* Services List */}
+                <div className="srv-services-list">
+                  <h3 className="srv-list-title">What We Offer</h3>
+                  <ul className="srv-list">
+                    {service.services.map((item, idx) => (
+                      <li
+                        key={idx}
+                        className="srv-list-item"
+                        style={{
+                          animationDelay: `${idx * 0.05}s`
+                        }}
+                      >
+                        <span
+                          className="srv-list-bullet"
+                          style={{ backgroundColor: service.color }}
+                        ></span>
+                        <span className="srv-list-text">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Stats with Animation */}
+                <div className="srv-stats-container">
+                  <h3 className="srv-stats-title">Our Impact</h3>
+                  <div className="srv-stats-grid">
+                    {service.stats.map((stat, idx) => (
+                      <div
+                        key={idx}
+                        className="srv-stat-card"
+                        style={{
+                          borderColor: `${service.color}30`,
+                          animationDelay: `${idx * 0.1}s`
+                        }}
+                      >
+                        <div
+                          className="srv-stat-value"
+                          style={{ color: service.color }}
+                        >
+                          <AnimatedCounter value={stat.value} duration={2000} />
+                        </div>
+                        <div className="srv-stat-label">{stat.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* CTA Button */}
+              <div className="srv-detail-cta">
+                <button
+                  className="srv-detail-btn"
+                  style={{
+                    backgroundColor: service.color,
+                    boxShadow: `0 10px 40px ${service.color}40`
+                  }}
+                >
+                  Get Started with {service.name}
+                  <span className="srv-detail-arrow">→</span>
+                </button>
+              </div>
+            </div>
+          </section>
+        ))}
+      </div>
+      <Footer />
     </div>
   );
 }

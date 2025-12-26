@@ -1,6 +1,14 @@
 import { useEffect, useRef, useState } from "react";
-// import Contact from "./Contact";
 import "../styles/about.css";
+import Footer from "../component/Footer";
+import {
+  FaLightbulb,
+  FaHandshake,
+  FaBolt,
+  FaBullseye,
+  FaArrowRight,
+  FaPhone
+} from "react-icons/fa";
 
 const About = () => {
   /* ======================
@@ -72,7 +80,6 @@ const About = () => {
     const parent = canvas.parentElement;
     const rect = parent.getBoundingClientRect();
     
-    // Set canvas size with device pixel ratio for crisp rendering
     const dpr = window.devicePixelRatio || 1;
     canvas.width = rect.width * dpr;
     canvas.height = rect.height * dpr;
@@ -80,7 +87,6 @@ const About = () => {
     canvas.style.height = rect.height + 'px';
     ctx.scale(dpr, dpr);
 
-    // Draw scratch surface with animated gradient
     const gradient = ctx.createLinearGradient(0, 0, rect.width, rect.height);
     gradient.addColorStop(0, "#a78bff");
     gradient.addColorStop(0.3, "#8b6fff");
@@ -90,12 +96,10 @@ const About = () => {
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, rect.width, rect.height);
 
-    // Add decorative border
     ctx.strokeStyle = "rgba(255, 255, 255, 0.3)";
     ctx.lineWidth = 2;
     ctx.strokeRect(5, 5, rect.width - 10, rect.height - 10);
 
-    // Add "SCRATCH ME" text with better styling
     ctx.fillStyle = "rgba(255, 255, 255, 0.98)";
     ctx.font = "bold 32px 'Poppins', Arial, sans-serif";
     ctx.textAlign = "center";
@@ -106,7 +110,6 @@ const About = () => {
     ctx.shadowOffsetY = 2;
     ctx.fillText("SCRATCH ME", rect.width / 2, rect.height / 2 - 20);
     
-    // Add emoji and subtext
     ctx.font = "24px Arial, sans-serif";
     ctx.fillText("👆 Use your finger or mouse", rect.width / 2, rect.height / 2 + 25);
   }, []);
@@ -128,13 +131,11 @@ const About = () => {
       y = (e.clientY - rect.top) * dpr;
     }
 
-    // Erase with larger radius for easier scratching
     ctx.globalCompositeOperation = "destination-out";
     ctx.beginPath();
     ctx.arc(x, y, 35 * dpr, 0, Math.PI * 2);
     ctx.fill();
 
-    // Calculate scratch progress
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     const pixels = imageData.data;
     let transparent = 0;
@@ -146,7 +147,6 @@ const About = () => {
     const progress = (transparent / (pixels.length / 4)) * 100;
     setScratchProgress(progress);
 
-    // Full reveal at 60% scratched
     if (progress > 60 && !isRevealed) {
       setIsRevealed(true);
       setTimeout(() => {
@@ -162,7 +162,6 @@ const About = () => {
   };
 
   const handleMouseMove = (e) => {
-    // Update cursor position for hand effect
     const canvas = canvasRef.current;
     if (!canvas) return;
     
@@ -201,6 +200,119 @@ const About = () => {
   const handleMouseLeave = () => {
     setCursorPos({ x: -100, y: -100 });
     setIsScratching(false);
+  };
+
+  /* ======================
+     TEAM DATA
+  ====================== */
+  const team = [
+    {
+      name: "Sabari",
+      role: "CEO & Founder",
+      image: "../about/sabari.png",
+      bio: "Visionary leader with 4+ years in tech innovation"
+    },
+  
+    {
+      name: "Emily Rodriguez",
+      role: "Human Resource",
+      image: "../about/thendral.png",
+      bio: "Creative mind behind our award-winning designs"
+    },
+    {
+      name: "Keerthivasan",
+      role: "Head of Development",
+      image: "../about/vasan.png",
+      bio: "Full-stack expert leading our development team"
+    },
+      {
+      name: "Krishna Suthers Raj",
+      role: "CTO",
+      image: "../about/krishna.png",
+      bio: "Technology architect specializing in scalable solutions"
+    },
+  ];
+
+  /* ======================
+     VALUES DATA
+  ====================== */
+  const values = [
+    {
+      icon: FaLightbulb,
+      title: "Innovation",
+      description: "We constantly push boundaries to deliver cutting-edge solutions that stay ahead of the curve"
+    },
+    {
+      icon: FaHandshake,
+      title: "Collaboration",
+      description: "Working together with clients as partners to achieve shared success and exceed expectations"
+    },
+    {
+      icon: FaBolt,
+      title: "Excellence",
+      description: "Committed to delivering the highest quality in every project, no matter the size or scope"
+    },
+    {
+      icon: FaBullseye,
+      title: "Integrity",
+      description: "Building trust through transparent communication and ethical business practices"
+    }
+  ];
+
+  /* ======================
+     TIMELINE DATA
+  ====================== */
+  const timeline = [
+    {
+      year: "2022",
+      title: "Foundation",
+      description: "LetNext Technologies was founded with a vision to revolutionize digital solutions"
+    },
+    {
+      year: "2023",
+      title: "Rapid Growth",
+      description: "Expanded team to 20+ professionals and launched 30+ successful projects"
+    },
+    {
+      year: "2024",
+      title: "Industry Recognition",
+      description: "Won multiple awards and established partnerships with Fortune 500 companies"
+    },
+    {
+      year: "2025",
+      title: "Global Expansion",
+      description: "Opened international offices and reached 50+ projects milestone"
+    }
+  ];
+
+  /* ======================
+     SCROLL ANIMATION OBSERVER
+  ====================== */
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    const elements = document.querySelectorAll('.scroll-animate');
+    elements.forEach((el) => observer.observe(el));
+
+    return () => {
+      elements.forEach((el) => observer.unobserve(el));
+    };
+  }, []);
+
+  /* ======================
+     HANDLE PHONE CALL
+  ====================== */
+  const handleScheduleCall = () => {
+    window.location.href = 'tel:9940847940';
   };
 
   return (
@@ -259,7 +371,6 @@ const About = () => {
         <div className="about-mission animate-mission">
           <h3 className="mission-title">Our Mission</h3>
           
-          {/* Progress indicator */}
           {scratchProgress > 0 && scratchProgress < 60 && (
             <div className="scratch-progress">
               <div className="progress-bar-container">
@@ -295,7 +406,6 @@ const About = () => {
               onTouchEnd={handleTouchEnd}
             />
 
-            {/* Custom hand cursor */}
             {!isRevealed && cursorPos.x > -50 && (
               <div
                 className={`hand-cursor ${isScratching ? 'scratching' : ''}`}
@@ -315,9 +425,115 @@ const About = () => {
             </div>
           )}
         </div>
+
+        {/* CORE VALUES SECTION */}
+        <div className="values-section scroll-animate">
+          <h3 className="section-title">Our Core Values</h3>
+          <p className="section-subtitle">
+            The principles that guide everything we do
+          </p>
+          
+          <div className="values-grid">
+            {values.map((value, index) => (
+              <div 
+                key={index} 
+                className="value-card scroll-animate"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="value-icon">
+                  <value.icon />
+                </div>
+                <h4 className="value-title">{value.title}</h4>
+                <p className="value-description">{value.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* JOURNEY TIMELINE */}
+        <div className="timeline-section scroll-animate">
+          <h3 className="section-title">Our Journey</h3>
+          <p className="section-subtitle">
+            Milestones that shaped our success story
+          </p>
+
+          <div className="timeline">
+            {timeline.map((item, index) => (
+              <div 
+                key={index} 
+                className={`timeline-item scroll-animate ${index % 2 === 0 ? 'left' : 'right'}`}
+                style={{ animationDelay: `${index * 0.2}s` }}
+              >
+                <div className="timeline-content">
+                  <div className="timeline-year">{item.year}</div>
+                  <h4 className="timeline-title">{item.title}</h4>
+                  <p className="timeline-description">{item.description}</p>
+                </div>
+                <div className="timeline-dot"></div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* TEAM SECTION */}
+        <div className="team-section scroll-animate">
+          <h3 className="section-title">Meet Our Team</h3>
+          <p className="section-subtitle">
+            The brilliant minds behind our success
+          </p>
+
+          <div className="team-grid">
+            {team.map((member, index) => (
+              <div 
+                key={index} 
+                className="team-card scroll-animate"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="team-image-wrapper">
+                  <img 
+                    src={member.image} 
+                    alt={member.name}
+                    className="team-image"
+                  />
+                  <div className="team-overlay"></div>
+                </div>
+                <div className="team-info">
+                  <h4 className="team-name">{member.name}</h4>
+                  <p className="team-role">{member.role}</p>
+                  <p className="team-bio">{member.bio}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CALL TO ACTION */}
+        <div className="cta-section scroll-animate">
+          <div className="cta-content">
+            <h3 className="cta-title">Ready to Start Your Project?</h3>
+            <p className="cta-description">
+              Let's transform your vision into reality with innovative solutions
+              tailored to your needs.
+            </p>
+            <div className="cta-buttons">
+              <button className="cta-btn primary">
+                Get Started
+                <span className="btn-arrow">
+                  <FaArrowRight />
+                </span>
+              </button>
+              <button className="cta-btn secondary" onClick={handleScheduleCall}>
+                Schedule a Call
+                <span className="btn-arrow">
+                  <FaPhone />
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* <Contact /> */}
+      <Footer/>
     </section>
   );
 };

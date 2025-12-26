@@ -2,7 +2,21 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import * as THREE from "three";
 import "../styles/product.css";
-// import About from "../component/About";
+import Footer from "../component/Footer";
+import {
+  FaRocket,
+  FaLock,
+  FaDollarSign,
+  FaBullseye,
+  FaLaptopCode,
+  FaMobileAlt,
+  FaGraduationCap,
+  FaNetworkWired,
+  FaCheckCircle,
+  FaArrowRight,
+  FaComments,
+  FaStar
+} from "react-icons/fa";
 
 const products = [
   {
@@ -11,6 +25,8 @@ const products = [
     desc: "Manage leads, deals and customer communication from a single, unified dashboard.",
     img: "/lnt.png",
     link: "/digital",
+    features: ["SEO Optimization", "Social Media", "Analytics", "Content Strategy"],
+    // stats: { users: "10K+", rating: "4.9★", growth: "+250%" }
   },
   {
     name: "Web Development",
@@ -18,6 +34,8 @@ const products = [
     desc: "Plan, execute and track multi-channel campaigns with real-time performance insights.",
     img: "./hotel.png",
     link: "/web",
+    features: ["Responsive Design", "Full Stack", "E-commerce", "PWA"],
+    // stats: { users: "5K+", rating: "4.8★", growth: "+180%" }
   },
   {
     name: "Technical Trainer",
@@ -25,6 +43,8 @@ const products = [
     desc: "Monitor case and next hearing smart alerts and deep observability.",
     img: "./advocate.png",
     link: "/technical",
+    features: ["Expert Training", "Live Projects", "Certification", "Placement Support"],
+    // stats: { users: "3K+", rating: "4.9★", growth: "+200%" }
   },
   {
     name: "IoT Device Hub",
@@ -32,18 +52,20 @@ const products = [
     desc: "Onboard, control and analyze thousands of devices securely from a single console.",
     img: "./iot1.png",
     link: "/iothub",
+    features: ["Device Control", "Real-time Monitoring", "Cloud Integration", "Security"],
+    // stats: { users: "15K+", rating: "4.7★", growth: "+300%" }
   },
 ];
 
 /* ======================
-   PRODUCT CARD WITH 3D
+   ENHANCED PRODUCT CARD WITH 3D
 ====================== */
 const ProductCard = ({ product, index, onNavigate }) => {
   const cardRef = useRef(null);
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
+  const [showDetails, setShowDetails] = useState(false);
   const rafRef = useRef(null);
 
-  // Optimized mouse move with RAF
   const handleMouseMove = useCallback((e) => {
     if (!cardRef.current) return;
 
@@ -73,6 +95,11 @@ const ProductCard = ({ product, index, onNavigate }) => {
       cancelAnimationFrame(rafRef.current);
     }
     setRotation({ x: 0, y: 0 });
+    setShowDetails(false);
+  }, []);
+
+  const handleMouseEnter = useCallback(() => {
+    setShowDetails(true);
   }, []);
 
   const handleClick = useCallback((e) => {
@@ -81,7 +108,6 @@ const ProductCard = ({ product, index, onNavigate }) => {
     onNavigate(product.link);
   }, [onNavigate, product.link]);
 
-  // Cleanup RAF on unmount
   useEffect(() => {
     return () => {
       if (rafRef.current) {
@@ -91,7 +117,6 @@ const ProductCard = ({ product, index, onNavigate }) => {
   }, []);
 
   return (
-    
     <div
       ref={cardRef}
       className="product-card"
@@ -102,12 +127,8 @@ const ProductCard = ({ product, index, onNavigate }) => {
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onMouseEnter={handleMouseEnter}
     >
-     <div className="snowfall-container">
-        {[...Array(80)].map((_, i) => (
-          <div key={i} className={`snowflake snowflake-${i + 1}`} />
-        ))}
-      </div>
       <div className="product-card-inner">
         <div className="product-image-wrap">
           <img 
@@ -119,6 +140,12 @@ const ProductCard = ({ product, index, onNavigate }) => {
           />
           <div className="product-image-overlay" />
           <div className="product-shine" />
+          
+          {/* Stats Badge */}
+          {/* <div className="product-badge">
+            <span className="badge-icon">🔥</span>
+            <span className="badge-text">{product.stats.users}</span>
+          </div> */}
         </div>
 
         <div className="product-content">
@@ -126,21 +153,22 @@ const ProductCard = ({ product, index, onNavigate }) => {
           <h3 className="product-name">{product.name}</h3>
           <p className="product-desc">{product.desc}</p>
 
+          {/* Features List */}
+          <div className={`product-features ${showDetails ? 'visible' : ''}`}>
+            {product.features.map((feature, idx) => (
+              <div key={idx} className="feature-item">
+                <span className="feature-icon">
+                  <FaCheckCircle />
+                </span>
+                <span className="feature-text">{feature}</span>
+              </div>
+            ))}
+          </div>
+
           <button className="product-cta" onClick={handleClick}>
             <span className="cta-text">Click Here</span>
             <span className="cta-icon">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
+              <FaArrowRight />
             </span>
           </button>
         </div>
@@ -171,6 +199,8 @@ export default function Product() {
   const snowRef = useRef(null);
   const navigate = useNavigate();
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [activeFilter, setActiveFilter] = useState("all");
+  const [hoveredTestimonial, setHoveredTestimonial] = useState(null);
   const animationFrameRef = useRef(null);
   const sceneRef = useRef(null);
 
@@ -193,12 +223,12 @@ export default function Product() {
     const renderer = new THREE.WebGLRenderer({
       canvas,
       alpha: true,
-      antialias: false, // Disable for better performance
+      antialias: false,
       powerPreference: "high-performance",
     });
 
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit pixel ratio
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
     const snowCount = 3000;
     const positions = new Float32Array(snowCount * 3);
@@ -227,7 +257,6 @@ export default function Product() {
     const snow = new THREE.Points(geometry, material);
     scene.add(snow);
 
-    // Optimized animation loop
     const animate = () => {
       animationFrameRef.current = requestAnimationFrame(animate);
 
@@ -249,7 +278,6 @@ export default function Product() {
 
     animate();
 
-    // Throttled resize handler
     let resizeTimeout;
     const onResize = () => {
       clearTimeout(resizeTimeout);
@@ -268,7 +296,6 @@ export default function Product() {
       window.removeEventListener("resize", onResize);
       clearTimeout(resizeTimeout);
       
-      // Proper cleanup
       geometry.dispose();
       material.dispose();
       renderer.dispose();
@@ -276,55 +303,98 @@ export default function Product() {
     };
   }, []);
 
-  // Scroll to top on component mount
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Optimized navigation handler
   const handleNavigation = useCallback((link) => {
     if (isTransitioning) return;
 
     setIsTransitioning(true);
     
-    // Smooth scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
     
-    // Add transition class
     document.body.classList.add('ripple-transition');
 
-    // Navigate after transition
     const transitionTimer = setTimeout(() => {
       navigate(link);
       
-      // Immediate scroll to top
       const scrollTimer = setTimeout(() => {
         window.scrollTo(0, 0);
       }, 0);
       
-      // Remove transition, add fade-in
       document.body.classList.remove('ripple-transition');
       document.body.classList.add('page-fade-in');
 
-      // Complete fade-in
       const fadeTimer = setTimeout(() => {
         document.body.classList.remove('page-fade-in');
         setIsTransitioning(false);
         window.scrollTo(0, 0);
       }, 800);
 
-      // Cleanup timeouts
       return () => {
         clearTimeout(scrollTimer);
         clearTimeout(fadeTimer);
       };
     }, 1200);
 
-    // Cleanup
     return () => {
       clearTimeout(transitionTimer);
     };
   }, [isTransitioning, navigate]);
+
+  // const filters = ["All Products", "Development", "Marketing", "IoT", "Training"];
+
+  const productCategories = [
+    {
+      icon: FaLaptopCode,
+      title: "Web & App",
+      count: "2",
+      color: "#a78bff"
+    },
+    {
+      icon: FaMobileAlt,
+      title: "Marketing",
+      count: "1",
+      color: "#60efff"
+    },
+    {
+      icon: FaGraduationCap,
+      title: "Training",
+      count: "1",
+      color: "#ff6b9d"
+    },
+    {
+      icon: FaNetworkWired,
+      title: "IoT",
+      count: "1",
+      color: "#ffd93d"
+    }
+  ];
+
+  const testimonials = [
+    {
+      name: "Suresh",
+      role: "CEO, TechCorp",
+      // image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&q=80",
+      text: "LetNext Technologies transformed our digital presence. Their solutions are innovative and results-driven.",
+      rating: 5
+    },
+    {
+      name: "Sarah Williams",
+      role: "Marketing Director",
+      // image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&q=80",
+      text: "Outstanding service and support. The team went above and beyond our expectations.",
+      rating: 5
+    },
+    {
+      name: "Steve",
+      role: "Startup Founder",
+      // image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&q=80",
+      text: "Best investment we made. Their IoT solutions helped us scale rapidly and efficiently.",
+      rating: 5
+    }
+  ];
 
   return (
     <section className="product-section" id="product">
@@ -334,10 +404,47 @@ export default function Product() {
       <div className="product-inner">
         <h2 className="product-title">Our Products</h2>
         <p className="product-subtitle">
-          Scalable, secure and future-ready solutions crafted by LetNext
-          Technologies.
+          Scalable, secure and future-ready solutions crafted by LetNext Technologies.
         </p>
 
+        {/* Category Overview */}
+        <div className="category-section">
+          <div className="category-grid">
+            {productCategories.map((category, index) => (
+              <div 
+                key={index} 
+                className="category-card"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div 
+                  className="category-icon"
+                  style={{ backgroundColor: `${category.color}20` }}
+                >
+                  <span style={{ color: category.color }}>
+                    <category.icon />
+                  </span>
+                </div>
+                <h3 className="category-title">{category.title}</h3>
+                <p className="category-count">{category.count} Products</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Filter Buttons */}
+        {/* <div className="filter-section">
+          {filters.map((filter, index) => (
+            <button
+              key={index}
+              className={`filter-btn ${activeFilter === filter.toLowerCase().replace(' ', '-') ? 'active' : ''}`}
+              onClick={() => setActiveFilter(filter.toLowerCase().replace(' ', '-'))}
+            >
+              {filter}
+            </button>
+          ))}
+        </div> */}
+
+        {/* Products Grid */}
         <div className="product-grid">
           {products.map((product, index) => (
             <ProductCard 
@@ -348,9 +455,110 @@ export default function Product() {
             />
           ))}
         </div>
+
+        {/* Features Comparison Section */}
+        <div className="comparison-section">
+          <h3 className="comparison-title">Why Choose Our Products?</h3>
+          <div className="comparison-grid">
+            <div className="comparison-item">
+              <div className="comparison-icon">
+                <FaRocket />
+              </div>
+              <h4 className="comparison-heading">Lightning Fast</h4>
+              <p className="comparison-text">Optimized for speed and performance across all devices</p>
+            </div>
+            <div className="comparison-item">
+              <div className="comparison-icon">
+                <FaLock />
+              </div>
+              <h4 className="comparison-heading">Secure & Reliable</h4>
+              <p className="comparison-text">Enterprise-grade security with 99.9% uptime guarantee</p>
+            </div>
+            <div className="comparison-item">
+              <div className="comparison-icon">
+                <FaDollarSign />
+              </div>
+              <h4 className="comparison-heading">Cost Effective</h4>
+              <p className="comparison-text">Best value for money with flexible pricing plans</p>
+            </div>
+            <div className="comparison-item">
+              <div className="comparison-icon">
+                <FaBullseye />
+              </div>
+              <h4 className="comparison-heading">Easy to Use</h4>
+              <p className="comparison-text">Intuitive interfaces designed for maximum productivity</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Testimonials Section */}
+        <div className="testimonials-section">
+          <h3 className="testimonials-title">What Our Clients Say</h3>
+          <p className="testimonials-subtitle">
+            Trusted by leading companies worldwide
+          </p>
+          
+          <div className="testimonials-grid">
+            {testimonials.map((testimonial, index) => (
+              <div 
+                key={index} 
+                className="testimonial-card"
+                style={{ animationDelay: `${index * 0.15}s` }}
+                onMouseEnter={() => setHoveredTestimonial(index)}
+                onMouseLeave={() => setHoveredTestimonial(null)}
+              >
+                <div className="testimonial-header">
+                  <img 
+                    src={testimonial.image} 
+                    alt={testimonial.name}
+                    className="testimonial-avatar"
+                  />
+                  <div className="testimonial-info">
+                    <h4 className="testimonial-name">{testimonial.name}</h4>
+                    <p className="testimonial-role">{testimonial.role}</p>
+                  </div>
+                </div>
+                <div className="testimonial-rating">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <span key={i} className="star">
+                      <FaStar />
+                    </span>
+                  ))}
+                </div>
+                {hoveredTestimonial === index && (
+                  <p className="testimonial-text">"{testimonial.text}"</p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="product-cta-section">
+          <div className="cta-content">
+            <h3 className="cta-title">Ready to Get Started?</h3>
+            <p className="cta-description">
+              Join thousands of satisfied customers and transform your business today
+            </p>
+            <div className="cta-buttons">
+              <button className="cta-primary-btn">
+                Start Free Trial
+                <span className="btn-icon">
+                  <FaArrowRight />
+                </span>
+              </button>
+              <button className="cta-secondary-btn">
+                Contact Sales
+                <span className="btn-icon">
+                  <FaComments />
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* <About /> */}
+      <Footer/>
     </section>
   );
 }

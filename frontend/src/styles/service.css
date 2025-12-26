@@ -1,4 +1,4 @@
-/* service.css - Optimized for Performance */
+/* service.css - Enhanced with Detailed Content Sections */
 
 /* Performance optimizations */
 * {
@@ -21,7 +21,7 @@ body {
 }
 
 .srv-snow-canvas {
-  position: absolute;
+  position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 1;
@@ -241,6 +241,276 @@ body {
   transform: scale(1.05);
 }
 
+/* ===================================
+   DETAILED SERVICE SECTIONS
+=================================== */
+.srv-details-wrapper {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  background: #000000;
+}
+
+.srv-detail-section {
+  min-height: 100vh;
+  padding: 100px 2rem;
+  position: relative;
+  scroll-margin-top: 0;
+}
+
+.srv-detail-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Detail Header */
+.srv-detail-header {
+  text-align: center;
+  margin-bottom: 80px;
+  animation: srvFadeInUp 0.8s ease-out;
+}
+
+.srv-detail-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  animation: srvBounceIn 0.8s ease-out;
+}
+
+.srv-detail-title {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 50%, #ffffff 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: srvGradientShift 3s ease-in-out infinite;
+}
+
+.srv-detail-desc {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* Features Grid */
+.srv-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 80px;
+}
+
+.srv-feature-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  animation: srvSlideUp 0.6s ease-out backwards;
+}
+
+.srv-feature-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.srv-feature-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.srv-feature-card:hover .srv-feature-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.srv-feature-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+.srv-feature-desc {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+}
+
+/* Content Grid */
+.srv-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 60px;
+}
+
+/* Services List */
+.srv-services-list {
+  animation: srvSlideInLeft 0.8s ease-out;
+}
+
+.srv-list-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 2rem;
+}
+
+.srv-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.srv-list-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  animation: srvFadeInLeft 0.5s ease-out backwards;
+  transition: all 0.3s ease;
+}
+
+.srv-list-item:hover {
+  padding-left: 1rem;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.srv-list-bullet {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.srv-list-text {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.3s ease;
+}
+
+.srv-list-item:hover .srv-list-text {
+  color: rgba(255, 255, 255, 1);
+}
+
+/* Stats Container */
+.srv-stats-container {
+  animation: srvSlideInRight 0.8s ease-out;
+}
+
+.srv-stats-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 2rem;
+}
+
+.srv-stats-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.srv-stat-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid;
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  animation: srvScaleIn 0.5s ease-out backwards;
+}
+
+.srv-stat-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: scale(1.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.srv-stat-value {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.srv-stat-label {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+/* Detail CTA */
+.srv-detail-cta {
+  text-align: center;
+  animation: srvFadeInUp 0.8s ease-out 0.4s backwards;
+}
+
+.srv-detail-btn {
+  padding: 1.25rem 3rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.srv-detail-btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.srv-detail-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.srv-detail-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+}
+
+.srv-detail-arrow {
+  font-size: 1.3rem;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.srv-detail-btn:hover .srv-detail-arrow {
+  transform: translateX(8px);
+}
+
 /* Animations */
 @keyframes srvFadeInDown {
   from {
@@ -261,6 +531,87 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes srvFadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes srvSlideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes srvSlideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes srvSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes srvBounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes srvScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes srvGradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
   }
 }
 
@@ -287,6 +638,27 @@ body {
 
   .srv-cta-wrapper {
     margin-bottom: 2rem;
+  }
+
+  .srv-detail-section {
+    padding: 80px 2rem;
+  }
+
+  .srv-detail-title {
+    font-size: 3rem;
+  }
+
+  .srv-detail-header {
+    margin-bottom: 60px;
+  }
+
+  .srv-features-grid {
+    gap: 1.5rem;
+    margin-bottom: 60px;
+  }
+
+  .srv-content-grid {
+    gap: 3rem;
   }
 }
 
@@ -334,6 +706,56 @@ body {
   .srv-cta-btn {
     padding: 0.875rem 1.75rem;
     font-size: 0.95rem;
+  }
+
+  .srv-detail-section {
+    padding: 60px 1.5rem;
+  }
+
+  .srv-detail-icon {
+    font-size: 3rem;
+  }
+
+  .srv-detail-title {
+    font-size: 2.5rem;
+  }
+
+  .srv-detail-desc {
+    font-size: 1.1rem;
+  }
+
+  .srv-detail-header {
+    margin-bottom: 50px;
+  }
+
+  .srv-features-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 50px;
+  }
+
+  .srv-content-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-bottom: 50px;
+  }
+
+  .srv-list-title,
+  .srv-stats-title {
+    font-size: 1.75rem;
+  }
+
+  .srv-list-text {
+    font-size: 1rem;
+  }
+
+  .srv-stat-value {
+    font-size: 2.5rem;
+  }
+
+  .srv-detail-btn {
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
   }
 }
 
@@ -407,6 +829,87 @@ body {
     padding: 0.75rem 1.5rem;
     font-size: 0.9rem;
   }
+
+  .srv-detail-section {
+    padding: 50px 1rem;
+  }
+
+  .srv-detail-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .srv-detail-title {
+    font-size: 2rem;
+  }
+
+  .srv-detail-desc {
+    font-size: 1rem;
+  }
+
+  .srv-detail-header {
+    margin-bottom: 40px;
+  }
+
+  .srv-features-grid {
+    gap: 1.25rem;
+    margin-bottom: 40px;
+  }
+
+  .srv-feature-card {
+    padding: 1.5rem;
+  }
+
+  .srv-feature-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .srv-feature-title {
+    font-size: 1.25rem;
+  }
+
+  .srv-feature-desc {
+    font-size: 0.9rem;
+  }
+
+  .srv-content-grid {
+    gap: 2rem;
+    margin-bottom: 40px;
+  }
+
+  .srv-list-title,
+  .srv-stats-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .srv-list-item {
+    padding: 0.75rem 0;
+  }
+
+  .srv-list-text {
+    font-size: 0.95rem;
+  }
+
+  .srv-stat-card {
+    padding: 1.5rem;
+  }
+
+  .srv-stat-value {
+    font-size: 2rem;
+  }
+
+  .srv-stat-label {
+    font-size: 0.9rem;
+  }
+
+  .srv-detail-btn {
+    padding: 0.875rem 2rem;
+    font-size: 0.95rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -448,6 +951,58 @@ body {
   .srv-cta-btn {
     padding: 0.7rem 1.3rem;
     font-size: 0.85rem;
+  }
+
+  .srv-detail-section {
+    padding: 40px 0.75rem;
+  }
+
+  .srv-detail-icon {
+    font-size: 2rem;
+  }
+
+  .srv-detail-title {
+    font-size: 1.75rem;
+  }
+
+  .srv-detail-desc {
+    font-size: 0.95rem;
+  }
+
+  .srv-features-grid {
+    gap: 1rem;
+  }
+
+  .srv-feature-card {
+    padding: 1.25rem;
+  }
+
+  .srv-feature-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+
+  .srv-feature-title {
+    font-size: 1.15rem;
+  }
+
+  .srv-list-title,
+  .srv-stats-title {
+    font-size: 1.35rem;
+  }
+
+  .srv-list-text {
+    font-size: 0.9rem;
+  }
+
+  .srv-stat-value {
+    font-size: 1.75rem;
+  }
+
+  .srv-detail-btn {
+    padding: 0.75rem 1.75rem;
+    font-size: 0.9rem;
   }
 }
 
