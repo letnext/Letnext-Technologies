@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import * as THREE from "three";
 import "../styles/service.css";
-import Product from "../component/Product";
+// import Product from "../component/Product";
 
 const services = [
   { name: "Digital Marketing", img: "/dig.png", color: "#FF6B6B" },
@@ -302,7 +302,7 @@ export default function Service() {
           </button>
         </div>
       </div>
-      <Product />
+      {/* <Product /> */}
     </div>
   );
 }

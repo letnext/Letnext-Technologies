@@ -1,7 +1,7 @@
 // Home.jsx — Smooth & Optimized with Pure White Title
 import { useRef, useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import Service from "../component/Service";
+// import Service from "../component/Service";
 import "../styles/home.css";
 import { create } from "zustand";
 
@@ -333,7 +333,7 @@ export default function Home() {
         </div>
       </div>
 
-      <Service />
+      {/* <Service /> */}
     </section>
   );
 }

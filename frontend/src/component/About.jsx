@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import Contact from "./Contact";
+// import Contact from "./Contact";
 import "../styles/about.css";
 
 const About = () => {
@@ -317,7 +317,7 @@ const About = () => {
         </div>
       </div>
 
-      <Contact />
+      {/* <Contact /> */}
     </section>
   );
 };

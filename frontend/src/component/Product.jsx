@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import * as THREE from "three";
 import "../styles/product.css";
-import About from "../component/About";
+// import About from "../component/About";
 
 const products = [
   {
@@ -350,7 +350,7 @@ export default function Product() {
         </div>
       </div>
 
-      <About />
+      {/* <About /> */}
     </section>
   );
 }
