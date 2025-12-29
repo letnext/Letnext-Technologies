@@ -218,7 +218,7 @@ function App() {
               <Route path="/web" element={<Web/>}/>
               <Route path="/technical" element={<Technical/>}/>
               <Route path="/iothub" element={<Iothub/>}/>
-              <Route path="*" element={<NotFound/>}/>
+              <Route path="/notfound" element={<NotFound/>}/>
             </Routes>
           </div>
           <Linkedin/>
