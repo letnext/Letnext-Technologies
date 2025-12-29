@@ -508,11 +508,11 @@ export default function Product() {
                 onMouseLeave={() => setHoveredTestimonial(null)}
               >
                 <div className="testimonial-header">
-                  <img 
+                  {/* <img 
                     src={testimonial.image} 
                     alt={testimonial.name}
                     className="testimonial-avatar"
-                  />
+                  /> */}
                   <div className="testimonial-info">
                     <h4 className="testimonial-name">{testimonial.name}</h4>
                     <p className="testimonial-role">{testimonial.role}</p>
@@ -548,7 +548,7 @@ export default function Product() {
                 </span>
               </button>
               <button className="cta-secondary-btn">
-                Contact Sales
+                Contact 
                 <span className="btn-icon">
                   <FaComments />
                 </span>

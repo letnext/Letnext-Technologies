@@ -191,7 +191,7 @@ const Contact = () => {
       if (!res.ok) throw new Error(data.message);
 
       setFormStatus("success");
-      setFormMessage("Message sent successfully! 🚀");
+      setFormMessage("Message sent successfully! ");
 
       const burst = successParticlesRef.current;
       if (burst) {
@@ -219,10 +219,10 @@ const Contact = () => {
   /* ================= SOCIAL LINKS ================= */
   const socialLinks = [
     { icon: FaLinkedin, url: "https://www.linkedin.com/in/letnexttechnologies1", color: "#0077B5", label: "LinkedIn" },
-    { icon: FaTwitter, url: "https://twitter.com", color: "#1DA1F2", label: "Twitter" },
+    // { icon: FaTwitter, url: "https://twitter.com", color: "#1DA1F2", label: "Twitter" },
     { icon: FaInstagram, url: "https://www.instagram.com/letnext_technologies", color: "#E4405F", label: "Instagram" },
     { icon: FaFacebook, url: "https://www.facebook.com/profile.php?id=61580107612289", color: "#1877F2", label: "Facebook" },
-    { icon: FaGithub, url: "https://github.com", color: "#333", label: "GitHub" },
+    // { icon: FaGithub, url: "https://github.com", color: "#333", label: "GitHub" },
   ];
 
   const [activeFAQ, setActiveFAQ] = useState(null);

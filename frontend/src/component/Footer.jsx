@@ -156,9 +156,7 @@ const Footer = () => {
       {/* BOTTOM */}
       <div className="footer-bottom">
         <p>© {currentYear} LetNext Technologies. All rights reserved.</p>
-        <p className="made-with">
-           LetNext Technologies
-        </p>
+        
       </div>
     </footer>
   );

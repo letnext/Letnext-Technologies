@@ -1020,3 +1020,144 @@ body {
     transition-duration: 0.3s;
   }
 }
+/* Additional CSS for Manual Navigation Controls */
+/* Add these styles to your existing service.css file */
+
+/* Navigation Buttons */
+.srv-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  z-index: 100;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.srv-carousel-container:hover .srv-nav-btn {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.srv-nav-prev {
+  left: 20px;
+}
+
+.srv-nav-next {
+  right: 20px;
+}
+
+.srv-nav-btn:hover {
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.srv-nav-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* Carousel Indicators */
+.srv-carousel-indicators {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 40px;
+  padding: 0 20px;
+}
+
+.srv-indicator-dot-btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.srv-indicator-dot-btn:hover {
+  transform: scale(1.3);
+}
+
+.srv-indicator-active {
+  width: 32px;
+  border-radius: 6px;
+  transform: scale(1);
+}
+
+.srv-indicator-active:hover {
+  transform: scale(1.1);
+}
+
+/* Drag Cursor */
+.srv-carousel-container {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.srv-carousel-container img {
+  pointer-events: none;
+  user-drag: none;
+  -webkit-user-drag: none;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .srv-nav-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .srv-nav-prev {
+    left: 10px;
+  }
+
+  .srv-nav-next {
+    right: 10px;
+  }
+
+  .srv-carousel-indicators {
+    margin-top: 30px;
+    gap: 8px;
+  }
+
+  .srv-indicator-dot-btn {
+    width: 10px;
+    height: 10px;
+  }
+
+  .srv-indicator-active {
+    width: 24px;
+  }
+}
+
+/* Touch device improvements */
+@media (hover: none) and (pointer: coarse) {
+  .srv-nav-btn {
+    opacity: 0.8;
+    pointer-events: all;
+  }
+
+  .srv-carousel-container {
+    touch-action: pan-y;
+  }
+}

@@ -1,0 +1,1031 @@
+/* Linkedin.css - LinkedIn Chatbot Styles */
+
+/* LinkedIn Color Variables */
+:root {
+  --linkedin-blue: #0a66c2;
+  --linkedin-dark-blue: #004182;
+  --linkedin-light-blue: #378fe9;
+  --linkedin-hover-blue: #095fa9;
+  --linkedin-bg: #f3f2ef;
+  --linkedin-white: #ffffff;
+  --linkedin-border: #d0cec7;
+  --linkedin-text-primary: #000000;
+  --linkedin-text-secondary: #666666;
+  --linkedin-text-light: #00000099;
+  --linkedin-green: #057642;
+  --linkedin-gold: #915907;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 12px 48px rgba(10, 102, 194, 0.25);
+}
+
+/* Floating LinkedIn Button */
+.linkedin-float-btn {
+  position: fixed;
+  bottom: 240px;
+  right: 30px;
+  z-index: 9998;
+  animation: professionalEntry 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.linkedin-float-btn.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0) translateY(30px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.linkedin-main-btn {
+  position: relative;
+  width: 45px;
+  height: 45px;
+  background: var(--linkedin-blue);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-xl);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow: visible;
+}
+
+.linkedin-main-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--linkedin-light-blue), var(--linkedin-dark-blue));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.linkedin-main-btn:hover::before {
+  opacity: 1;
+}
+
+.linkedin-main-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 15px 50px rgba(10, 102, 194, 0.4);
+}
+
+.linkedin-main-btn:active {
+  transform: translateY(-2px) scale(1);
+}
+
+.linkedin-icon {
+  font-size: 25px;
+  color: white;
+  position: relative;
+  z-index: 2;
+  animation: professionalBounce 3s ease-in-out infinite;
+}
+
+@keyframes professionalBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* LinkedIn Ring Effect */
+.linkedin-ring {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 3px solid var(--linkedin-blue);
+  border-radius: 50%;
+  animation: ringExpand 2s ease-out infinite;
+  opacity: 0;
+}
+
+@keyframes ringExpand {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* Pulse Effect */
+.linkedin-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(10, 102, 194, 0.4), transparent 60%);
+  animation: linkedinPulse 2s ease-out infinite;
+  z-index: 0;
+}
+
+@keyframes linkedinPulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* Tooltip */
+.linkedin-tooltip {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  margin-bottom: 18px;
+  background: white;
+  padding: 14px 18px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--linkedin-border);
+  min-width: 240px;
+}
+
+.tooltip-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.tooltip-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--linkedin-text-primary);
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Arial, sans-serif;
+}
+
+.tooltip-subtitle {
+  font-size: 12px;
+  color: var(--linkedin-text-secondary);
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Arial, sans-serif;
+}
+
+.tooltip-badge {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+}
+
+.badge-icon {
+  font-size: 16px;
+  color: var(--linkedin-gold);
+}
+
+.linkedin-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  right: 25px;
+  border: 8px solid transparent;
+  border-top-color: white;
+}
+
+.linkedin-float-btn:hover .linkedin-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Chat Container */
+.linkedin-chat-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 420px;
+  max-width: calc(100vw - 40px);
+  height: 650px;
+  max-height: calc(100vh - 100px);
+  background: white;
+  border-radius: 16px;
+  box-shadow: var(--shadow-xl);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform-origin: bottom right;
+  transform: scale(0) translateY(30px);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 1px solid var(--linkedin-border);
+}
+
+.linkedin-chat-container.open {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* LinkedIn Header */
+.linkedin-chat-header {
+  background: white;
+  padding: 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--linkedin-border);
+  gap: 12px;
+}
+
+.linkedin-header-content {
+  display: flex;
+  gap: 14px;
+  flex: 1;
+}
+
+.linkedin-avatar {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.linkedin-avatar img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid var(--linkedin-blue);
+  object-fit: cover;
+}
+
+.linkedin-premium-badge {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  border: 2px solid white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--linkedin-gold);
+  box-shadow: var(--shadow-sm);
+}
+
+.linkedin-header-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.linkedin-header-text h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--linkedin-text-primary);
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Arial, sans-serif;
+}
+
+.linkedin-tagline {
+  font-size: 13px;
+  color: var(--linkedin-text-secondary);
+  margin: 0;
+  line-height: 1.4;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Arial, sans-serif;
+}
+
+.linkedin-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--linkedin-green);
+  border-radius: 50%;
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.status-text {
+  font-size: 12px;
+  color: var(--linkedin-text-secondary);
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Arial, sans-serif;
+}
+
+.linkedin-close-btn {
+  background: var(--linkedin-bg);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--linkedin-text-secondary);
+  font-size: 16px;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.linkedin-close-btn:hover {
+  background: var(--linkedin-border);
+  transform: rotate(90deg);
+}
+
+/* Highlights Bar */
+.linkedin-highlights-bar {
+  display: flex;
+  justify-content: space-around;
+  padding: 14px 20px;
+  background: var(--linkedin-bg);
+  border-bottom: 1px solid var(--linkedin-border);
+  gap: 12px;
+}
+
+.highlight-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.highlight-label {
+  font-size: 11px;
+  color: var(--linkedin-text-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Arial, sans-serif;
+}
+
+.highlight-value {
+  font-size: 13px;
+  color: var(--linkedin-text-primary);
+  font-weight: 600;
+  text-align: center;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Arial, sans-serif;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+/* Chat Body */
+.linkedin-chat-body {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background: var(--linkedin-bg);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.linkedin-chat-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.linkedin-chat-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.linkedin-chat-body::-webkit-scrollbar-thumb {
+  background: var(--linkedin-border);
+  border-radius: 10px;
+}
+
+/* Message Bubbles */
+.linkedin-message {
+  display: flex;
+  gap: 12px;
+  animation: messageEnter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes messageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message-avatar {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.message-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+}
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.message-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.message-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--linkedin-text-primary);
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Arial, sans-serif;
+}
+
+.message-title {
+  font-size: 12px;
+  color: var(--linkedin-text-secondary);
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Arial, sans-serif;
+}
+
+.message-bubble {
+  background: white;
+  padding: 14px 16px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--linkedin-border);
+}
+
+.message-bubble p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--linkedin-text-primary);
+  line-height: 1.6;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Arial, sans-serif;
+}
+
+.message-time {
+  font-size: 12px;
+  color: var(--linkedin-text-secondary);
+  padding: 0 4px;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Arial, sans-serif;
+}
+
+/* Typing Indicator */
+.typing-bubble {
+  background: white;
+  padding: 16px 20px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  display: inline-flex;
+  border: 1px solid var(--linkedin-border);
+}
+
+.typing-indicator {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.typing-indicator span {
+  width: 8px;
+  height: 8px;
+  background: var(--linkedin-blue);
+  border-radius: 50%;
+  animation: typingAnimation 1.4s ease-in-out infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typingAnimation {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  30% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+}
+
+/* Quick Actions */
+.linkedin-quick-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: actionsSlideIn 0.6s ease-out 0.3s both;
+}
+
+@keyframes actionsSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.linkedin-action-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  background: white;
+  border: 2px solid var(--linkedin-border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.linkedin-action-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(10, 102, 194, 0.05), transparent);
+  transition: left 0.5s ease;
+}
+
+.linkedin-action-card:hover::before {
+  left: 100%;
+}
+
+.linkedin-action-card:hover {
+  border-color: var(--accent-color);
+  transform: translateX(8px);
+  box-shadow: var(--shadow-md);
+}
+
+.action-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.linkedin-action-card:hover .action-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.action-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.action-content h4 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--linkedin-text-primary);
+}
+
+.action-content p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--linkedin-text-secondary);
+}
+
+.action-arrow {
+  font-size: 20px;
+  color: var(--linkedin-text-light);
+  transition: all 0.3s ease;
+}
+
+.linkedin-action-card:hover .action-arrow {
+  transform: translateX(6px);
+  color: var(--linkedin-blue);
+}
+
+/* LinkedIn Post Card */
+.linkedin-post-card {
+  background: white;
+  border: 1px solid var(--linkedin-border);
+  border-radius: 12px;
+  overflow: hidden;
+  animation: postSlideIn 0.6s ease-out 0.5s both;
+}
+
+@keyframes postSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-bottom: 1px solid var(--linkedin-border);
+}
+
+.post-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--linkedin-blue);
+}
+
+.post-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.post-info h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--linkedin-text-primary);
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Arial, sans-serif;
+}
+
+.post-info p {
+  margin: 4px 0 0 0;
+  font-size: 12px;
+  color: var(--linkedin-text-secondary);
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Arial, sans-serif;
+}
+
+.post-content {
+  padding: 16px;
+}
+
+.post-content p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--linkedin-text-primary);
+  line-height: 1.6;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Arial, sans-serif;
+}
+
+.post-stats {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-top: 1px solid var(--linkedin-border);
+  border-bottom: 1px solid var(--linkedin-border);
+  font-size: 12px;
+  color: var(--linkedin-text-secondary);
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Arial, sans-serif;
+}
+
+.post-likes {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stat-icon {
+  color: var(--linkedin-blue);
+}
+
+.post-actions {
+  display: flex;
+  justify-content: space-around;
+  padding: 8px;
+}
+
+.post-action-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+  background: none;
+  border: none;
+  color: var(--linkedin-text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Arial, sans-serif;
+}
+
+.post-action-btn:hover {
+  background: var(--linkedin-bg);
+  color: var(--linkedin-text-primary);
+}
+
+/* CTA Banner */
+.linkedin-cta-banner {
+  background: linear-gradient(135deg, var(--linkedin-blue), var(--linkedin-dark-blue));
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  animation: ctaSlideIn 0.6s ease-out 0.7s both;
+}
+
+@keyframes ctaSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cta-content h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Arial, sans-serif;
+}
+
+.cta-content p {
+  margin: 6px 0 0 0;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Arial, sans-serif;
+}
+
+.cta-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: white;
+  color: var(--linkedin-blue);
+  border: none;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Arial, sans-serif;
+}
+
+.cta-button:hover {
+  background: var(--linkedin-bg);
+  transform: scale(1.05);
+}
+
+/* LinkedIn Footer */
+.linkedin-chat-footer {
+  padding: 16px 20px;
+  background: white;
+  border-top: 1px solid var(--linkedin-border);
+  border-radius: 0 0 16px 16px;
+}
+
+.linkedin-input-container {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background: var(--linkedin-bg);
+  border: 2px solid var(--linkedin-border);
+  border-radius: 24px;
+  padding: 10px 16px;
+  transition: all 0.3s ease;
+}
+
+.linkedin-input-container:focus-within {
+  border-color: var(--linkedin-blue);
+  background: white;
+}
+
+.linkedin-input-container input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: var(--linkedin-text-primary);
+  background: transparent;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Arial, sans-serif;
+}
+
+.linkedin-input-container input::placeholder {
+  color: var(--linkedin-text-secondary);
+}
+
+.linkedin-send-btn {
+  background: var(--linkedin-blue);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.linkedin-send-btn:hover {
+  background: var(--linkedin-hover-blue);
+  transform: scale(1.1);
+}
+
+.linkedin-footer-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: 11px;
+  color: var(--linkedin-text-secondary);
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Arial, sans-serif;
+}
+
+.footer-icon {
+  font-size: 14px;
+  color: var(--linkedin-blue);
+}
+
+/* Professional Entry Animation */
+@keyframes professionalEntry {
+  from {
+    transform: translateY(100px) scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .linkedin-chat-container {
+    width: calc(100vw - 20px);
+    height: calc(100vh - 80px);
+    bottom: 10px;
+    right: 10px;
+    border-radius: 12px;
+  }
+
+  .linkedin-float-btn {
+    bottom: 218px;
+    right: 20px;
+  }
+
+  .linkedin-main-btn {
+    width: 45px;
+    height: 45px;
+  }
+
+  .linkedin-icon {
+    font-size: 25px;
+  }
+
+  .linkedin-tooltip {
+    min-width: 200px;
+    padding: 12px 14px;
+  }
+
+  .linkedin-chat-header {
+    padding: 16px;
+  }
+
+  .linkedin-avatar img {
+    width: 56px;
+    height: 56px;
+  }
+
+  .linkedin-highlights-bar {
+    padding: 10px 16px;
+  }
+
+  .linkedin-chat-body {
+    padding: 16px;
+  }
+
+  .linkedin-action-card {
+    padding: 14px;
+  }
+
+  .action-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
+  }
+
+  .cta-button {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .linkedin-chat-container,
+  .linkedin-float-btn,
+  .linkedin-message,
+  .linkedin-quick-actions,
+  .linkedin-post-card,
+  .linkedin-cta-banner {
+    animation: none;
+  }
+
+  .linkedin-main-btn:hover {
+    transform: scale(1.05);
+  }
+
+  .linkedin-pulse,
+  .linkedin-ring {
+    animation: none;
+    display: none;
+  }
+}

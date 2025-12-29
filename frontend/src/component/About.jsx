@@ -9,6 +9,7 @@ import {
   FaArrowRight,
   FaPhone
 } from "react-icons/fa";
+import { MdLocalPhone } from "react-icons/md";
 
 const About = () => {
   /* ======================
@@ -214,7 +215,7 @@ const About = () => {
     },
   
     {
-      name: "Emily Rodriguez",
+      name: "Elantamil Thendral",
       role: "Human Resource",
       image: "../about/thendral.png",
       bio: "Creative mind behind our award-winning designs"
@@ -225,12 +226,12 @@ const About = () => {
       image: "../about/vasan.png",
       bio: "Full-stack expert leading our development team"
     },
-      {
-      name: "Krishna Suthers Raj",
-      role: "CTO",
-      image: "../about/krishna.png",
-      bio: "Technology architect specializing in scalable solutions"
-    },
+    //   {
+    //   name: "Krishna Suthers Raj",
+    //   role: "CTO",
+    //   image: "../about/krishna.png",
+    //   bio: "Technology architect specializing in scalable solutions"
+    // },
   ];
 
   /* ======================
@@ -338,8 +339,8 @@ const About = () => {
               software solutions that empower businesses to scale confidently.
             </p>
             <p className="animate-paragraph delay-1">
-              Our expertise spans <strong>Web & App</strong>, <strong>AI</strong>,
-              <strong> Cloud</strong>, <strong>IoT</strong>, and digital
+              Our expertise spans <strong>Web Development & App Development</strong>, <strong>Technical Trainer</strong>,
+              <strong> Digital Marketing</strong>, <strong>Internet of Things</strong>, and digital
               transformation.
             </p>
             <p className="animate-paragraph delay-2">
@@ -477,7 +478,7 @@ const About = () => {
 
         {/* TEAM SECTION */}
         <div className="team-section scroll-animate">
-          <h3 className="section-title">Meet Our Team</h3>
+          <h3 className="section-title">Founders Of LetNext Technologies</h3>
           <p className="section-subtitle">
             The brilliant minds behind our success
           </p>
@@ -525,7 +526,7 @@ const About = () => {
               <button className="cta-btn secondary" onClick={handleScheduleCall}>
                 Schedule a Call
                 <span className="btn-arrow">
-                  <FaPhone />
+                  <MdLocalPhone />
                 </span>
               </button>
             </div>

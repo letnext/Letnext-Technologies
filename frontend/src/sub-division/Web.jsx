@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Snowfall from "react-snowfall";
 import "../sub-division/web.css";
+import Footer from "../component/Footer"
 
 const Web = () => {
   const [expandedCard, setExpandedCard] = useState(null);
@@ -140,6 +141,7 @@ const Web = () => {
           ))}
         </div>
       </div>
+      <Footer/>
     </section>
   );
 };

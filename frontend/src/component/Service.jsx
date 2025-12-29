@@ -1,4 +1,4 @@
-// Service.jsx - Enhanced with React Icons and Animated Stats
+// Service.jsx - Enhanced with React Icons, Animated Stats, and Manual Navigation
 import { useEffect, useRef, useState, useCallback } from "react";
 import * as THREE from "three";
 import "../styles/service.css";
@@ -22,7 +22,9 @@ import {
   FaGlobe,
   FaWifi,
   FaRobot,
-  FaCloud
+  FaCloud,
+  FaChevronLeft,
+  FaChevronRight
 } from "react-icons/fa";
 import { FaBullseye as FaTarget } from "react-icons/fa6";
 
@@ -66,7 +68,7 @@ const services = [
     stats: [
       { label: "Client", value: "50+" },
       { label: "Client Satisfaction", value: "98%" },
-      { label: "Campaigns Launched", value: "50+" }
+      { label: "Campaigns Launched", value: "30+" }
     ]
   },
   {
@@ -227,7 +229,7 @@ const services = [
       "Edge Computing Solutions"
     ],
     stats: [
-      { label: "Connected Devices", value: "50+" },
+      { label: "Connected Devices", value: "20+" },
       { label: "Data Points Daily", value: "10+" },
       { label: "System Reliability", value: "99.8%" }
     ]
@@ -308,10 +310,15 @@ export default function Service() {
   const sceneRef = useRef(null);
   const animationRef = useRef(null);
   const sectionRefs = useRef([]);
+  
+  // Manual navigation state
+  const [dragStart, setDragStart] = useState(null);
+  const [dragOffset, setDragOffset] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
 
   // Auto-scroll functionality
   useEffect(() => {
-    if (!isHovered) {
+    if (!isHovered && !isDragging) {
       autoScrollRef.current = setInterval(() => {
         setActiveIndex((prev) => (prev + 1) % services.length);
       }, 3000);
@@ -322,7 +329,7 @@ export default function Service() {
         clearInterval(autoScrollRef.current);
       }
     };
-  }, [isHovered]);
+  }, [isHovered, isDragging]);
 
   // Three.js snow effect - optimized
   useEffect(() => {
@@ -459,6 +466,73 @@ export default function Service() {
     }, 100);
   }, []);
 
+  // Manual Navigation Functions
+  const handlePrevious = useCallback(() => {
+    setActiveIndex((prev) => (prev - 1 + services.length) % services.length);
+    if (autoScrollRef.current) {
+      clearInterval(autoScrollRef.current);
+    }
+  }, []);
+
+  const handleNext = useCallback(() => {
+    setActiveIndex((prev) => (prev + 1) % services.length);
+    if (autoScrollRef.current) {
+      clearInterval(autoScrollRef.current);
+    }
+  }, []);
+
+  // Drag/Swipe Handlers
+  const handleDragStart = useCallback((e) => {
+    const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+    setDragStart(clientX);
+    setIsDragging(true);
+    if (autoScrollRef.current) {
+      clearInterval(autoScrollRef.current);
+    }
+  }, []);
+
+  const handleDragMove = useCallback((e) => {
+    if (dragStart === null) return;
+    
+    const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+    const offset = clientX - dragStart;
+    setDragOffset(offset);
+  }, [dragStart]);
+
+  const handleDragEnd = useCallback(() => {
+    if (dragStart === null) return;
+
+    const threshold = 50; // Minimum drag distance to trigger navigation
+    
+    if (Math.abs(dragOffset) > threshold) {
+      if (dragOffset > 0) {
+        // Dragged right - go to previous
+        handlePrevious();
+      } else {
+        // Dragged left - go to next
+        handleNext();
+      }
+    }
+
+    setDragStart(null);
+    setDragOffset(0);
+    setIsDragging(false);
+  }, [dragStart, dragOffset, handlePrevious, handleNext]);
+
+  // Keyboard Navigation
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (e.key === 'ArrowLeft') {
+        handlePrevious();
+      } else if (e.key === 'ArrowRight') {
+        handleNext();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [handlePrevious, handleNext]);
+
   const getCardStyle = useCallback((index) => {
     const offset = (index - activeIndex + services.length) % services.length;
     const isActive = offset === 0;
@@ -469,8 +543,11 @@ export default function Service() {
     let scale = 0.5;
     let blur = 8;
 
+    // Apply drag offset to active card
+    const dragTransform = isDragging && isActive ? `translateX(${dragOffset}px)` : "";
+
     if (isActive) {
-      transform = "translateX(0) translateY(0)";
+      transform = `${dragTransform} translateX(0) translateY(0)`;
       opacity = 1;
       zIndex = 50;
       scale = 1;
@@ -502,7 +579,7 @@ export default function Service() {
     }
 
     return { transform, opacity, zIndex, scale, blur };
-  }, [activeIndex]);
+  }, [activeIndex, isDragging, dragOffset]);
 
   return (
     <div className="srv-page-wrapper">
@@ -518,6 +595,14 @@ export default function Service() {
           className="srv-carousel-container"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
+          onMouseDown={handleDragStart}
+          onMouseMove={handleDragMove}
+          onMouseUp={handleDragEnd}
+          // onMouseLeave={handleDragEnd}
+          onTouchStart={handleDragStart}
+          onTouchMove={handleDragMove}
+          onTouchEnd={handleDragEnd}
+          style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
         >
           {services.map((service, index) => {
             const { transform, opacity, zIndex, scale, blur } = getCardStyle(index);
@@ -532,6 +617,7 @@ export default function Service() {
                   opacity,
                   zIndex,
                   filter: `blur(${blur}px)`,
+                  transition: isDragging ? 'none' : 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
                 }}
                 onClick={() => handleCardClick(index)}
               >
@@ -550,6 +636,7 @@ export default function Service() {
                     alt={service.name}
                     className="srv-card-img"
                     loading="lazy"
+                    draggable="false"
                   />
 
                   <div className="srv-card-dark-gradient" />
@@ -582,6 +669,52 @@ export default function Service() {
               </div>
             );
           })}
+
+          {/* Navigation Buttons */}
+          <button
+            className="srv-nav-btn srv-nav-prev"
+            onClick={(e) => {
+              e.stopPropagation();
+              handlePrevious();
+            }}
+            aria-label="Previous service"
+            style={{
+              backgroundColor: `${services[activeIndex].color}20`,
+              borderColor: services[activeIndex].color,
+            }}
+          >
+            <FaChevronLeft style={{ color: services[activeIndex].color }} />
+          </button>
+          
+          <button
+            className="srv-nav-btn srv-nav-next"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleNext();
+            }}
+            aria-label="Next service"
+            style={{
+              backgroundColor: `${services[activeIndex].color}20`,
+              borderColor: services[activeIndex].color,
+            }}
+          >
+            <FaChevronRight style={{ color: services[activeIndex].color }} />
+          </button>
+        </div>
+
+        {/* Carousel Indicators */}
+        <div className="srv-carousel-indicators">
+          {services.map((service, index) => (
+            <button
+              key={index}
+              className={`srv-indicator-dot-btn ${index === activeIndex ? 'srv-indicator-active' : ''}`}
+              onClick={() => handleCardClick(index)}
+              aria-label={`Go to ${service.name}`}
+              style={{
+                backgroundColor: index === activeIndex ? service.color : 'rgba(255, 255, 255, 0.3)',
+              }}
+            />
+          ))}
         </div>
 
         <div className="srv-cta-wrapper">

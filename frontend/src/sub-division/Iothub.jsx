@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Snowfall from "react-snowfall";
 import "../sub-division/iothub.css";
+import Footer from "../component/Footer"
+
 
 const Iothub = () => {
   const [expandedCard, setExpandedCard] = useState(null);
@@ -140,6 +142,7 @@ const Iothub = () => {
           ))}
         </div>
       </div>
+      <Footer/>
     </section>
   );
 };

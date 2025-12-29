@@ -11,11 +11,17 @@ import Contact from "./component/Contact";
 import Footer from "./component/Footer";
 
 import Chatbot from "./component/Chatbot";
+import Whatapp from "./component/Whatapp";
+import Instagram from "./component/Instagram";
+import Linkedin from "./component/Linkedin";
+import Error404 from "./component/Error404";
+import NotFound from "./component/Notfound";
+import Blogs from "./component/Blogs";
 
 // sub division
-import Digital from "./sub-division/Digital"
+import Digital from "./sub-division/Digital";
 import Web from "./sub-division/Web";
-import Technical from "./sub-division/Technical"
+import Technical from "./sub-division/Technical";
 import Iothub from "./sub-division/Iothub";
 
 function StartScreen({ onStart }) {
@@ -122,6 +128,7 @@ function App() {
   const [showStartScreen, setShowStartScreen] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [fadeIn, setFadeIn] = useState(false);
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
   const audioRef = useRef(null);
 
   useEffect(() => {
@@ -130,6 +137,19 @@ function App() {
       setShowStartScreen(false);
       setFadeIn(true);
     }
+  }, []);
+
+  useEffect(() => {
+    const handleOnline = () => setIsOnline(true);
+    const handleOffline = () => setIsOnline(false);
+
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+
+    return () => {
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+    };
   }, []);
 
   const handleStartClick = async () => {
@@ -153,6 +173,11 @@ function App() {
       setTimeout(() => setFadeIn(true), 50);
     }, 5000);
   };
+
+  // Show 404 error page if offline
+  if (!isOnline) {
+    return <Error404 />;
+  }
 
   return (
     <Router>
@@ -183,14 +208,22 @@ function App() {
               <Route path="/product" element={<Product />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/blogs" element={<Blogs />} />
               <Route path="/footer" element={<Footer />} />
               <Route path="/chatbot" element={<Chatbot/>} />
+              <Route path="/whatapp" element={<Whatapp/>} />
+              <Route path="/instagram" element={<Instagram/>} />
+              <Route path="/linkedin" element={<Linkedin/>} />
               <Route path="/digital" element={<Digital/>}/>
               <Route path="/web" element={<Web/>}/>
               <Route path="/technical" element={<Technical/>}/>
               <Route path="/iothub" element={<Iothub/>}/>
+              <Route path="*" element={<NotFound/>}/>
             </Routes>
           </div>
+          <Linkedin/>
+          <Instagram/>
+          <Whatapp/>
           <Chatbot/>
         </>
       )}

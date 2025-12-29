@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Snowfall from "react-snowfall";
 import "../sub-division/digital.css";
+import Footer from "../component/Footer"
 
 const Digital = () => {
   const [expandedCard, setExpandedCard] = useState(null);
@@ -142,6 +143,7 @@ const Digital = () => {
           ))}
         </div>
       </div>
+      <Footer/>
     </section>
   );
 };
