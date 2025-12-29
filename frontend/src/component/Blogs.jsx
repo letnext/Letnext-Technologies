@@ -13,7 +13,7 @@ import {
   FaClock,
   FaEnvelope
 } from 'react-icons/fa';
-import '../styles/Blogs.css';
+import '../styles/blogs.css';
 import Footer from "../component/Footer"
 
 const Blogs = () => {
