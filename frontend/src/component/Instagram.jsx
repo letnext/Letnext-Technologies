@@ -8,7 +8,7 @@ import {
   FaSearch,
   FaPlusSquare,
 } from "react-icons/fa";
-import "../styles/Instagram.css";
+import "../styles/instagram.css";
 
 const Instagram = () => {
   const [isOpen, setIsOpen] = useState(false);
