@@ -4,7 +4,7 @@ import Snowfall from 'react-snowfall';
 import { IoHome, IoArrowBack } from "react-icons/io5";
 import { BiSearchAlt } from "react-icons/bi";
 import { MdError } from "react-icons/md";
-import '../styles/notFound.css';
+import '../styles/notfound.css';
 
 
 
