@@ -496,3 +496,286 @@ html {
     page-break-inside: avoid;
   }
 }
+/* ========================================
+   MARKETING CONTENT SECTION STYLES
+   Add this to your digital.css file or create a separate file
+======================================== */
+
+.marketing-content-section {
+  position: relative;
+  max-width: 1200px;
+  margin: 80px auto 0;
+  padding: 60px 30px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1;
+}
+
+/* Headers */
+.marketing-content-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.marketing-h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 20px;
+  line-height: 1.3;
+  background: linear-gradient(135deg, #60efff 0%, #a78bff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.marketing-h2 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 40px 0 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(96, 239, 255, 0.3);
+}
+
+.marketing-h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #60efff;
+  margin: 30px 0 15px;
+}
+
+.marketing-h4 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #a78bff;
+  margin: 20px 0 10px;
+}
+
+/* Text */
+.marketing-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 20px;
+}
+
+.marketing-quote {
+  font-style: italic;
+  font-size: 1.2rem;
+  color: #60efff;
+  padding: 20px;
+  background: rgba(96, 239, 255, 0.05);
+  border-left: 4px solid #60efff;
+  border-radius: 8px;
+  margin: 25px 0;
+}
+
+/* Introduction Section */
+.marketing-intro {
+  margin-bottom: 50px;
+}
+
+/* Services Section */
+.marketing-services {
+  margin: 50px 0;
+}
+
+.service-block {
+  margin: 40px 0;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+.service-block:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(96, 239, 255, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(96, 239, 255, 0.1);
+}
+
+.service-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, rgba(96, 239, 255, 0.2) 0%, rgba(167, 139, 255, 0.2) 100%);
+  border-radius: 15px;
+  margin-bottom: 20px;
+  border: 2px solid rgba(96, 239, 255, 0.3);
+}
+
+.service-main-icon {
+  font-size: 2rem;
+  color: #60efff;
+}
+
+/* Service Features */
+.service-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.service-feature-item {
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s ease;
+}
+
+.service-feature-item:hover {
+  background: rgba(167, 139, 255, 0.08);
+  border-color: rgba(167, 139, 255, 0.3);
+  transform: translateX(5px);
+}
+
+/* Why Works Section */
+.marketing-why-works {
+  margin: 50px 0;
+  padding: 40px;
+  background: linear-gradient(135deg, rgba(96, 239, 255, 0.05) 0%, rgba(167, 139, 255, 0.05) 100%);
+  border-radius: 15px;
+  border: 1px solid rgba(96, 239, 255, 0.2);
+}
+
+.why-works-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.why-works-item {
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+.why-works-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* FAQs Section */
+.marketing-faqs {
+  margin: 50px 0;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.faq-list {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.faq-item {
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border-left: 4px solid #a78bff;
+  transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+  background: rgba(167, 139, 255, 0.08);
+  border-left-color: #60efff;
+  transform: translateX(10px);
+}
+
+.faq-question {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #60efff;
+  margin-bottom: 12px;
+}
+
+.faq-answer {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .marketing-content-section {
+    margin: 40px auto 0;
+    padding: 40px 20px;
+  }
+
+  .marketing-h1 {
+    font-size: 2rem;
+  }
+
+  .marketing-h2 {
+    font-size: 1.7rem;
+  }
+
+  .marketing-h3 {
+    font-size: 1.4rem;
+  }
+
+  .marketing-h4 {
+    font-size: 1.1rem;
+  }
+
+  .marketing-text {
+    font-size: 1rem;
+  }
+
+  .service-block {
+    padding: 25px;
+  }
+
+  .service-features {
+    grid-template-columns: 1fr;
+  }
+
+  .why-works-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .marketing-why-works,
+  .marketing-faqs {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .marketing-h1 {
+    font-size: 1.6rem;
+  }
+
+  .marketing-h2 {
+    font-size: 1.4rem;
+  }
+
+  .marketing-h3 {
+    font-size: 1.2rem;
+  }
+
+  .service-icon-wrapper {
+    width: 60px;
+    height: 60px;
+  }
+
+  .service-main-icon {
+    font-size: 1.5rem;
+  }
+}

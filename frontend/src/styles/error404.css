@@ -1,4 +1,9 @@
-/* Error 404 Page Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .error-404-container {
   position: fixed;
   top: 0;
@@ -8,12 +13,32 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #000000;
   z-index: 9999;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+.snowflake {
+  position: absolute;
+  top: -20px;
+  color: #ffffff;
+  font-size: 20px;
+  user-select: none;
+  pointer-events: none;
+  animation: fall linear infinite;
+  z-index: 1;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
 }
 
 .error-404-content {
+  position: relative;
+  z-index: 2;
   text-align: center;
   color: #ffffff;
   max-width: 600px;
@@ -32,7 +57,6 @@
   }
 }
 
-/* WiFi Animation */
 .error-animation {
   position: relative;
   display: inline-block;
@@ -44,43 +68,17 @@
   width: 120px;
   height: 120px;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  gap: 8px;
+  color: #ffffff;
+  margin: 0 auto;
 }
 
-.wifi-bar {
-  width: 100%;
-  height: 8px;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 4px;
+.wifi-icon {
+  width: 100px;
+  height: 100px;
+  opacity: 0.3;
   animation: fadeBar 1.5s ease-in-out infinite;
-}
-
-.wifi-bar-1 {
-  width: 30%;
-  animation-delay: 0s;
-}
-
-.wifi-bar-2 {
-  width: 60%;
-  animation-delay: 0.2s;
-}
-
-.wifi-bar-3 {
-  width: 90%;
-  animation-delay: 0.4s;
-}
-
-.wifi-dot {
-  width: 15px;
-  height: 15px;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  margin-top: 5px;
-  animation: fadeBar 1.5s ease-in-out infinite;
-  animation-delay: 0.6s;
 }
 
 @keyframes fadeBar {
@@ -98,9 +96,9 @@
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 80px;
-  color: #ff6b6b;
+  color: #ffffff;
   font-weight: bold;
-  text-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
   animation: pulse 1.5s ease-in-out infinite;
 }
 
@@ -113,12 +111,11 @@
   }
 }
 
-/* Error Text */
 .error-code {
   font-size: 120px;
   font-weight: bold;
   margin: 20px 0;
-  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
   letter-spacing: 10px;
   animation: glitch 2s ease-in-out infinite;
 }
@@ -145,7 +142,7 @@
   font-size: 32px;
   margin: 20px 0;
   font-weight: 600;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
 }
 
 .error-message {
@@ -153,10 +150,9 @@
   line-height: 1.6;
   margin: 20px 0;
   color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 1px 5px rgba(255, 255, 255, 0.2);
 }
 
-/* Suggestions */
 .error-suggestions {
   margin: 30px 0;
   background: rgba(255, 255, 255, 0.1);
@@ -185,23 +181,22 @@
   content: "→";
   position: absolute;
   left: 0;
-  color: #ffd93d;
+  color: #ffffff;
   font-weight: bold;
 }
 
-/* Retry Button */
 .retry-button {
   margin-top: 30px;
   padding: 15px 40px;
   font-size: 18px;
   font-weight: 600;
-  color: #667eea;
+  color: #000000;
   background: #ffffff;
   border: none;
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -209,13 +204,13 @@
 
 .retry-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
   background: #f0f0f0;
 }
 
 .retry-button:active {
   transform: translateY(-1px);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
 }
 
 .retry-icon {
@@ -261,6 +256,11 @@
     height: 100px;
   }
 
+  .wifi-icon {
+    width: 80px;
+    height: 80px;
+  }
+
   .cross-mark {
     font-size: 60px;
   }
@@ -291,6 +291,11 @@
   .wifi-symbol {
     width: 80px;
     height: 80px;
+  }
+
+  .wifi-icon {
+    width: 60px;
+    height: 60px;
   }
 
   .cross-mark {

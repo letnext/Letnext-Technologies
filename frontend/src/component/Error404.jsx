@@ -1,16 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { WifiOff, RefreshCw } from 'lucide-react';
 import '../styles/error404.css';
 
 const Error404 = () => {
+  const [snowflakes, setSnowflakes] = useState([]);
+
+  useEffect(() => {
+    // Generate 50 snowflakes with random properties
+    const flakes = Array.from({ length: 50 }, (_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      animationDuration: Math.random() * 3 + 2,
+      animationDelay: Math.random() * 5,
+      fontSize: Math.random() * 10 + 10,
+      opacity: Math.random() * 0.6 + 0.4
+    }));
+    setSnowflakes(flakes);
+  }, []);
+
   return (
     <div className="error-404-container">
+      {/* Snowfall Effect */}
+      {snowflakes.map((flake) => (
+        <div
+          key={flake.id}
+          className="snowflake"
+          style={{
+            left: `${flake.left}%`,
+            animationDuration: `${flake.animationDuration}s`,
+            animationDelay: `${flake.animationDelay}s`,
+            fontSize: `${flake.fontSize}px`,
+            opacity: flake.opacity
+          }}
+        >
+          ❄
+        </div>
+      ))}
+
+      {/* Error Content */}
       <div className="error-404-content">
         <div className="error-animation">
           <div className="wifi-symbol">
-            <div className="wifi-bar wifi-bar-1"></div>
-            <div className="wifi-bar wifi-bar-2"></div>
-            <div className="wifi-bar wifi-bar-3"></div>
-            <div className="wifi-dot"></div>
+            <WifiOff className="wifi-icon" size={100} />
           </div>
           <div className="cross-mark">✕</div>
         </div>
@@ -34,7 +65,7 @@ const Error404 = () => {
           className="retry-button"
           onClick={() => window.location.reload()}
         >
-          <span className="retry-icon">↻</span>
+          <RefreshCw className="retry-icon" size={24} />
           Retry Connection
         </button>
       </div>

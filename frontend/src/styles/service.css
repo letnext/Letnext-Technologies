@@ -83,8 +83,8 @@ body {
 .srv-carousel-item {
   position: absolute;
   transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-              opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-              filter 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+    filter 0.7s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   will-change: transform, opacity;
   backface-visibility: hidden;
@@ -132,7 +132,12 @@ body {
 .srv-card-dark-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2) 50%, transparent);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0.2) 50%,
+    transparent
+  );
   z-index: 2;
   pointer-events: none;
 }
@@ -208,7 +213,8 @@ body {
 }
 
 @keyframes srvPulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -283,6 +289,21 @@ body {
   margin-bottom: 1.5rem;
   letter-spacing: -0.02em;
   background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 50%, #ffffff 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: srvGradientShift 3s ease-in-out infinite;
+  position: relative;
+  bottom: 60px;
+}
+.srv-detail-title1 {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #8c8585 0%, #8d8686 50%, #6887a6 100%);
   background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -607,7 +628,8 @@ body {
 }
 
 @keyframes srvGradientShift {
-  0%, 100% {
+  0%,
+  100% {
     background-position: 0% 50%;
   }
   50% {
@@ -1015,7 +1037,7 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  
+
   .srv-carousel-item {
     transition-duration: 0.3s;
   }
@@ -1072,9 +1094,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 19px;
+  row-gap: 50px;
   margin-top: 40px;
   padding: 0 20px;
+ 
 }
 
 .srv-indicator-dot-btn {

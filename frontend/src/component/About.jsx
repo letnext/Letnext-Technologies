@@ -7,7 +7,11 @@ import {
   FaBolt,
   FaBullseye,
   FaArrowRight,
-  FaPhone
+  FaPhone,
+  FaSearch,
+  FaAd,
+  FaCode,
+  FaCogs
 } from "react-icons/fa";
 import { MdLocalPhone } from "react-icons/md";
 
@@ -25,7 +29,7 @@ const About = () => {
   const hasAnimated = useRef(false);
 
   useEffect(() => {
-    const targets = { projects: 50, clients: 30, years: 3 };
+    const targets = { projects: 50, clients: 30, years: 4 };
     const duration = 2000;
     const steps = 60;
     const interval = duration / steps;
@@ -226,12 +230,6 @@ const About = () => {
       image: "../about/vasan.png",
       bio: "Full-stack expert leading our development team"
     },
-    //   {
-    //   name: "Krishna Suthers Raj",
-    //   role: "CTO",
-    //   image: "../about/krishna.png",
-    //   bio: "Technology architect specializing in scalable solutions"
-    // },
   ];
 
   /* ======================
@@ -364,6 +362,42 @@ const About = () => {
             <div className="stat-item animate-stat delay-3">
               <h3 className="stat-number blink-247">24/7</h3>
               <p className="stat-label">Support & Innovation</p>
+            </div>
+          </div>
+        </div>
+
+        {/* NEW COMPANY DESCRIPTION SECTION */}
+        <div className="company-description-section scroll-animate">
+          <div className="company-header">
+            <h1 className="company-h1">About LetNext Technologies</h1>
+            <p className="company-subtitle">Digital Marketing Company Driving Business Growth</p>
+          </div>
+
+          <div className="company-content">
+            <p className="company-text">
+              LetNext Technologies is a result-driven Digital Marketing agency, and we are dedicated to making sure that the growth of the businesses increases in the competitive world of the internet. We offer our service solution in Online Marketing that will prove beneficial in improving the visibility of the brand. Moreover, we will make sure that our services are valuable in taking the customers ahead. Since we are a trustworthy IT Solution company in the region of Erode, we have always made sure to use creativity, data, and technology in a way that will enable the use of digital strategies which will lead to making a difference.
+            </p>
+          </div>
+
+          <div className="services-highlight">
+            <div className="service-highlight-item">
+              <div className="service-highlight-icon">
+                <FaSearch />
+              </div>
+              <h2 className="company-h2">SEO Service in Erode & Paid Advertising Experts</h2>
+              <p className="company-text">
+                As a renowned Content marketing company, we provide engaging content to connect brands and their target consumers. Our niche SEO Service solution in Erode boosts the search engine rankings of the website, boosts the traffic of the website, and builds a positive online reputation. We are a renowned Ad running company in Erode, and our campaigns are data-driven and executed on both search and social platforms. Being a renowned Meta ad running firm, our teams provide effective ad campaigns aiming to maximize their online reach, engagement, as well as returns.
+              </p>
+            </div>
+
+            <div className="service-highlight-item">
+              <div className="service-highlight-icon">
+                <FaCode />
+              </div>
+              <h3 className="company-h3">Top Software Development Company & IT Solutions</h3>
+              <p className="company-text">
+                LetNext Technologies is also known as the best software Development Company, which offers scalable and secure digital solutions. The software development process of our company is well-integrated with our digital marketing process. As a renowned IT solution provider in Erode, we focus on innovation, quality, and customer satisfaction. We develop digital products, from websites to customized softwares, which help in improved efficiency and growth of businesses. The combination of technology and digital marketing expertise helps businesses create a robust digital identity. LetNext Technologies, being a renowned IT solution provider in Erode, stays on top of this ever-changing digital landscape.
+              </p>
             </div>
           </div>
         </div>
@@ -534,7 +568,7 @@ const About = () => {
         </div>
       </div>
 
-      <Footer/>
+      {/* <Footer/> */}
     </section>
   );
 };

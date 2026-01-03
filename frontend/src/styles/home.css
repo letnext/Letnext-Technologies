@@ -347,16 +347,16 @@ html {
 }
 
 /* Button text */
-.btn-text {
+/* .btn-text {
   position: relative;
   z-index: 2;
   transition: letter-spacing 0.3s ease;
   pointer-events: none;
-}
+} */
 
-.read-more-btn:hover .btn-text {
+/* .read-more-btn:hover .btn-text {
   letter-spacing: 1px;
-}
+} */
 
 /* ===================================
    ENHANCED ARROW ANIMATION
@@ -759,6 +759,7 @@ html {
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  height: 500px;
 }
 
 .service-image-container::before {
@@ -1295,5 +1296,399 @@ html {
 
   .service-item {
     page-break-inside: avoid;
+  }
+}
+/* ServicesAndWhy.css */
+
+/* ==================== SERVICES SECTION ==================== */
+.services-bw-section {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  padding: 100px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.services-bw-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.services-bw-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.section-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #ffffff 0%, #888888 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-subtitle {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: #999999;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.services-bw-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  padding: 20px;
+}
+
+.service-card {
+  background: linear-gradient(135deg, #3c3838 0%, #0f0f0f 100%);
+  border: 1px solid #2a2a2a;
+  border-radius: 20px;
+  padding: 40px 30px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(50px);
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.service-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(var(--index, 0) * 0.1s);
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  border-color: #ffffff;
+  box-shadow: 0 20px 60px rgba(255, 255, 255, 0.1);
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+.card-number {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 3rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.05);
+  line-height: 1;
+  transition: all 0.4s ease;
+}
+
+.service-card:hover .card-number {
+  color: rgba(255, 255, 255, 0.15);
+  transform: scale(1.1);
+}
+
+.card-icon {
+  font-size: 3rem;
+  margin-bottom: 25px;
+  display: inline-block;
+  transition: transform 0.4s ease;
+}
+
+.service-card:hover .card-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.card-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 15px;
+  transition: color 0.3s ease;
+}
+
+.service-card:hover .card-title {
+  color: #f0f0f0;
+}
+
+.card-description {
+  font-size: 1rem;
+  color: #aaaaaa;
+  line-height: 1.7;
+  margin-bottom: 30px;
+  min-height: 80px;
+}
+
+.card-btn {
+  background: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: #ffffff;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.card-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.card-btn span {
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+.card-btn:hover span {
+  color: #000000;
+}
+
+.btn-arrow {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.card-btn:hover .btn-arrow {
+  transform: translateX(5px);
+}
+
+/* ==================== WHY CHOOSE US SECTION ==================== */
+.why-choose-section {
+  background: linear-gradient(135deg, #000000 0%, #000000 100%);
+  padding: 100px 20px;
+  position: relative;
+}
+
+.why-choose-container {
+  max-width: 1400px;
+  margin: 0 auto;
+
+}
+
+.why-choose-section .section-title {
+  background: linear-gradient(135deg, #ffffff 0%, #333333 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.why-choose-section .section-subtitle {
+  color: #666666;
+}
+
+.why-choose-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  padding: 20px;
+}
+
+.why-card {
+  background: #ffffff;
+  border: 2px solid #e0e0e0;
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(50px);
+  overflow: hidden;
+}
+
+.why-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.03) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.why-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(var(--index, 0) * 0.1s);
+}
+
+.why-card:hover {
+  transform: translateY(-10px);
+  border-color: #000000;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  background: #000000;
+}
+
+.why-card:hover::before {
+  opacity: 1;
+}
+
+.why-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 25px;
+  background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+.why-card:hover .why-icon-wrapper {
+  background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+  transform: scale(1.1);
+}
+
+.why-icon {
+  font-size: 2.5rem;
+  transition: transform 0.4s ease;
+}
+
+.why-card:hover .why-icon {
+  transform: rotate(360deg);
+}
+
+.why-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 15px;
+  transition: color 0.3s ease;
+}
+
+.why-card:hover .why-title {
+  color: #ffffff;
+}
+
+.why-description {
+  font-size: 0.95rem;
+  color: #666666;
+  line-height: 1.6;
+  transition: color 0.3s ease;
+}
+
+.why-card:hover .why-description {
+  color: #cccccc;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 768px) {
+  .services-bw-section,
+  .why-choose-section {
+    padding: 60px 15px;
+  }
+
+  .section-header {
+    margin-bottom: 50px;
+  }
+
+  .services-bw-grid,
+  .why-choose-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 10px;
+  }
+
+  .service-card,
+  .why-card {
+    padding: 30px 20px;
+  }
+
+  .card-number {
+    font-size: 2rem;
+    top: 15px;
+    right: 20px;
+  }
+
+  .card-icon,
+  .why-icon {
+    font-size: 2.5rem;
+  }
+
+  .card-title,
+  .why-title {
+    font-size: 1.4rem;
+  }
+
+  .card-description,
+  .why-description {
+    font-size: 0.9rem;
+    min-height: auto;
+  }
+
+  .why-icon-wrapper {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .card-btn {
+    padding: 10px 25px;
+    font-size: 0.9rem;
   }
 }

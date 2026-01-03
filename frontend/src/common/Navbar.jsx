@@ -17,6 +17,11 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   // Smooth navigation with liquid transition
   const handleNavClick = (e, path) => {
     e.preventDefault();
@@ -31,6 +36,7 @@ const Navbar = () => {
 
     setTimeout(() => {
       navigate(path);
+      window.scrollTo(0, 0); // Scroll to top immediately after navigation
       document.body.classList.remove("liquid-transition");
       document.body.classList.add("liquid-entrance");
 
@@ -46,9 +52,8 @@ const Navbar = () => {
     { name: "Service", path: "/service" },
     { name: "Product", path: "/product" },
     { name: "About", path: "/about" },
-     { name: "Blogs", path: "/blogs" },
+    { name: "Blogs", path: "/blogs" },
     { name: "Contact", path: "/contact" },
-   
   ];
 
   return (

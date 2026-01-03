@@ -14,7 +14,7 @@ import {
   FaEnvelope
 } from 'react-icons/fa';
 import '../styles/blogs.css';
-import Footer from "../component/Footer"
+// import Footer from "../component/Footer"
 
 const Blogs = () => {
   const navigate = useNavigate();
@@ -181,7 +181,7 @@ const Blogs = () => {
         {/* Search and Filter Section */}
         <div className="blogs-controls">
           <div className="search-container">
-            <FaSearch className="search-icon" />
+            {/* <FaSearch className="search-icon" /> */}
             <input
               type="text"
               placeholder="Search blogs..."
@@ -215,7 +215,7 @@ const Blogs = () => {
           {filteredBlogs.map((blog) => (
             <div key={blog.id} className="blog-card">
               <div className="blog-image-container">
-                <img src={blog.image} alt={blog.title} className="blog-image" />
+                <img src={blog.image} alt="IT service and Digital marketing" className="blog-image" />
                 <div className="blog-overlay"></div>
                 <div className="blog-category-badge">
                   {blog.category === 'App' && <FaMobileAlt />}
@@ -285,7 +285,7 @@ const Blogs = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Snowfall from "react-snowfall";
 import "../sub-division/technical.css";
-import Footer from "../component/Footer"
-
+// import Footer from "../component/Footer";
+import { FaGraduationCap, FaLaptopCode, FaCertificate, FaBriefcase, FaCode, FaDatabase } from "react-icons/fa";
 
 const Technical = () => {
   const [expandedCard, setExpandedCard] = useState(null);
@@ -118,7 +118,7 @@ const Technical = () => {
 
               {/* CARD IMAGE */}
               <div className="card-image-wrapper">
-                <img src={card.image} alt={card.title} className="card-image" />
+                <img src={card.image} alt="IT service and Digital marketing" className="card-image" />
                 <div className="image-overlay" />
               </div>
 
@@ -141,8 +141,126 @@ const Technical = () => {
             </div>
           ))}
         </div>
+
+        {/* NEW TECHNICAL TRAINING CONTENT SECTION */}
+        <div className="training-content-section">
+          <div className="training-content-header">
+            <h1 className="training-h1">LetNext Technologies — Technical Trainer Program</h1>
+            <p className="training-tech-badge">Technologies Covered: Java, Python, C, C++, MERN Stack</p>
+          </div>
+
+          <div className="training-block">
+            <div className="training-icon-wrapper">
+              <FaGraduationCap className="training-main-icon" />
+            </div>
+            <h2 className="training-h2">Expert Training</h2>
+            <p className="training-text">
+              At LetNext Technologies, we are pleased to announce training services with experts in training students to transform budding individuals into expert software professionals. Our Technical Trainer Program aims to build a high level of expertise in Java, Python, C, C++, and MERN Technologies. Every training module will be handled by experts who possess high-level knowledge and experience in the industry, thus enabling our students to gain in-depth knowledge in the theoretical as well as practical aspects.
+            </p>
+            <p className="training-text">
+              The syllabus comprises areas like object-oriented programming, data structures, competitive programming, backend & frontend development, and modern software development. Since we have a very clear focus on explanations, practice problems, and doubt clearance, we ensure that the concept of these areas is nicely clear to the students.
+            </p>
+            <p className="training-text">
+              Through the provision of an extremely interactive learning platform and one-on-one mentee support, the confidence to code effectively is implanted in the attendees. At LetNext Technologies, the objective is to ensure that each and every one of the students is employable and expert at the most demanded skills of programming. Be it a new beginning for a new career or an improvement for a better one, LetNext is the place to be.
+            </p>
+          </div>
+
+          <div className="training-block">
+            <div className="training-icon-wrapper">
+              <FaLaptopCode className="training-main-icon" />
+            </div>
+            <h2 className="training-h2">Live Projects</h2>
+            <p className="training-text">
+              Learning will be most effective when knowledge is applied – that's why LetNext Technologies includes live projects within every level of learning. Students will have a chance to implement real-world projects for the industry, giving them a clear understanding of software development processes, architectures, error-checking processes, and implementations.
+            </p>
+            <p className="training-text">
+              The Java & Python projects aid in developing enterprise-level apps, automation scripts, as well as data processing. The C & C++ projects assist in refining skills such as managing memory, algorithmic development, and performance optimizations. The MERN Stack projects revolve around the development of fully fledged web apps using MongoDB, Express, React, & Node.js.
+            </p>
+            <p className="training-text">
+              The projects undertaken by the learners are rated by professionals in the industry to check the quality of the projects. This increases the learner's credibility to a huge extent as they are able to demonstrate their working experience in the projects in their portfolios and resumes. At "LetNext Technologies," we are able to make learners in the class ready to provide solutions to actual problems using the latest technologies.
+            </p>
+          </div>
+
+          <div className="training-block">
+            <div className="training-icon-wrapper">
+              <FaCertificate className="training-main-icon" />
+            </div>
+            <h2 className="training-h2">Certification</h2>
+            <p className="training-text">
+              Upon successful completion of the course, LetNext Technologies awards a globally recognized certification to help students highlight their technical qualifications to employers. Our certification validates your skills in Java, Python, C, C++ and MERN Stack, showcasing your proficiency in programming, full-stack development, and software engineering principles.
+            </p>
+            <p className="training-text">
+              This certification plays a crucial role in career growth, making resumes more competitive for roles like Java Developer, Python Developer, Software Engineer, Web Developer, and Full-Stack Developer. It also acts as proof of hands-on learning, live projects, and industry-based coding exposure.
+            </p>
+            <p className="training-text">
+              We follow strict quality standards in assessments and project evaluation to ensure certification truly reflects student capability. With LetNext Technologies' certification, learners gain confidence and recognition in the job market, opening doors to opportunities in startups, MNCs, and IT product companies.
+            </p>
+          </div>
+
+          <div className="training-block">
+            <div className="training-icon-wrapper">
+              <FaBriefcase className="training-main-icon" />
+            </div>
+            <h2 className="training-h2">Placement Support</h2>
+            <p className="training-text">
+              LetNext Technologies is beyond training; we guide the student at every step of the career with dedicated placement support. Our placement experts assist students in the preparation of resumes, conducting mock interviews, soft skills training, aptitude coaching, and personality development to make sure they are prepared well for every kind of job interview.
+            </p>
+            <p className="training-text">
+              The students get privileged exposure to top IT companies in India through a strong network of hiring partners and frequent recruitment drives. We help learners confidently tackle technical interviews for roles pertaining to Java development, Python automation, C/C++ system programming, and full-stack MERN development.
+            </p>
+            <p className="training-text">
+              Moreover, our mentorship does not end after certification. We further support the learners till they get the best career position, which is in harmony with their skills and aspirations. At LetNext Technologies, your placement success is our main goal, and we commit to helping you unlock your future in the IT industry.
+            </p>
+          </div>
+
+          <div className="training-technologies">
+            <h2 className="training-h2">Technologies We Teach</h2>
+            <div className="tech-grid">
+              <div className="tech-item">
+                <div className="tech-icon-box">
+                  <FaCode />
+                </div>
+                <h3 className="tech-name">Java</h3>
+                <p className="tech-desc">Enterprise-level application development</p>
+              </div>
+              <div className="tech-item">
+                <div className="tech-icon-box">
+                  <FaCode />
+                </div>
+                <h3 className="tech-name">Python</h3>
+                <p className="tech-desc">Automation & data processing</p>
+              </div>
+              <div className="tech-item">
+                <div className="tech-icon-box">
+                  <FaCode />
+                </div>
+                <h3 className="tech-name">C & C++</h3>
+                <p className="tech-desc">System programming & algorithms</p>
+              </div>
+              <div className="tech-item">
+                <div className="tech-icon-box">
+                  <FaDatabase />
+                </div>
+                <h3 className="tech-name">MERN Stack</h3>
+                <p className="tech-desc">Full-stack web development</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="training-cta">
+            <h2 className="training-h2">Ready to Start Your Tech Journey?</h2>
+            <p className="training-text">
+              Join LetNext Technologies today and transform your career with expert training, live projects, industry-recognized certification, and dedicated placement support.
+            </p>
+            <div className="cta-buttons">
+              <button className="cta-primary">Enroll Now</button>
+              <button className="cta-secondary">Download Brochure</button>
+            </div>
+          </div>
+        </div>
       </div>
-      <Footer/>
+
+      {/* <Footer/> */}
     </section>
   );
 };

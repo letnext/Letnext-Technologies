@@ -305,7 +305,14 @@ const Contact = () => {
                 <div className="info-icon"><FaMapMarkerAlt /></div>
                 <div className="info-text">
                   <h3>Location</h3>
-                  <span>Gobi, Erode, Tamil Nadu</span>
+                  <a
+                  href="https://www.google.com/maps/place/LetNext+Technologies/@11.4682108,77.4666403,853m/data=!3m1!1e3!4m16!1m9!3m8!1s0x3ba93d007d2ede47:0x9ba7e194f1f4b1ff!2sLetNext+Technologies!8m2!3d11.4682108!4d77.4692152!9m1!1b1!16s%2Fg%2F11xyrvyfmc!3m5!1s0x3ba93d007d2ede47:0x9ba7e194f1f4b1ff!8m2!3d11.4682108!4d77.4692152!16s%2Fg%2F11xyrvyfmc?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  217, Kulavikaradu, P.VellalaPalayam, Gobi<br />
+                  Erode, Tamil Nadu 638476
+                </a>
                 </div>
               </div>
             </div>
@@ -375,7 +382,7 @@ const Contact = () => {
               <div className="stat-label">Support Available</div>
             </div>
             <div className="stat-box">
-              <div className="stat-value">3+</div>
+              <div className="stat-value">4+</div>
               <div className="stat-label">Years Experience</div>
             </div>
           </div>

@@ -1,9 +1,25 @@
-// Home.jsx — Smooth & Optimized with Pure White Title + Services Section
+// Home.jsx — Merged Complete Version
 import { useRef, useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/home.css";
 import { create } from "zustand";
 import Footer from "../component/Footer";
+import HowWeWorkAndTestimonial from "./HowWeWorkTestimonial";
+import { 
+  FaLightbulb, 
+  FaChartLine, 
+  FaMobileAlt, 
+  FaLaptopCode, 
+  FaPalette, 
+  FaMicrochip, 
+  FaChalkboardTeacher,
+  FaBullseye,
+  FaBolt,
+  FaHandshake,
+  FaDollarSign,
+  FaTrophy,
+  FaClock
+} from "react-icons/fa";
 
 /* ======================
    GLOBAL STORE
@@ -207,13 +223,13 @@ const TypewriterText = ({ text, speed = 25, delay = 800 }) => {
     if (currentIndex === 0 && !hasStartedRef.current) {
       const initialTimeout = setTimeout(() => {
         hasStartedRef.current = true;
-        
+
         if (audioRef.current) {
           audioRef.current.play().catch(err => {
             console.log("Audio play failed:", err);
           });
         }
-        
+
         setCurrentIndex(1);
         setDisplayText(text[0]);
       }, delay);
@@ -248,7 +264,7 @@ const TypewriterText = ({ text, speed = 25, delay = 800 }) => {
 };
 
 /* ======================
-   SERVICES SECTION COMPONENT
+   ORIGINAL SERVICES SECTION COMPONENT
 ====================== */
 const ServicesSection = () => {
   const [visibleItems, setVisibleItems] = useState([]);
@@ -259,43 +275,13 @@ const ServicesSection = () => {
   const services = [
     {
       id: 1,
-      title: "Digital Marketing",
+      title: "Make Us Your Go-To IT Partner",
       tag: "Sales • Support",
-      description: "Manage leads, deals and customer communication from a single, unified dashboard.",
-      features: ["SEO Optimization", "Social Media", "Analytics", "Content Strategy"],
+      description: "LetNext Technologies is a reputable Digital marketing company and IT solutions provider that uses technology and astute marketing to help businesses expand. As a trusted IT solution company in Erode, we offer complete Online marketing service solutions including digital marketing, custom software development, website development, Seo Service in erode, paid advertising, and managed IT solutions catered to corporate requirements.We are also recognized as a top software development company delivering scalable and reliable digital products.",
+      features: ["We are dedicated to providing top-notch IT and digital services.", "Provided by seasoned experts that comprehend actual business difficulties", "Committed to comprehending our clients' actual needs and aspirations"],
       image: "/lnt.png",
-      link: "/digital",
+      link: "/product",
       position: "left"
-    },
-    {
-      id: 2,
-      title: "Web Development",
-      tag: "Java • Python • MERN Stack",
-      description: "Plan, execute and track multi-channel campaigns with real-time performance insights.",
-      features: ["Responsive Design", "Full Stack", "E-commerce", "PWA"],
-      image: "./hotel.png",
-      link: "/web",
-      position: "right"
-    },
-    {
-      id: 3,
-      title: "Technical Trainer",
-      tag: "Java • Python • C • C++ • MERN Stack",
-      description: "Monitor case and next hearing smart alerts and deep observability.",
-      features: ["Expert Training", "Live Projects", "Certification", "Placement Support"],
-      image: "./advocate.png",
-      link: "/technical",
-      position: "left"
-    },
-    {
-      id: 4,
-      title: "IoT Device Hub",
-      tag: "Edge • Automation",
-      description: "Onboard, control and analyze thousands of devices securely from a single console.",
-      features: ["Device Control", "Real-time Monitoring", "Cloud Integration", "Security"],
-      image: "./iot1.png",
-      link: "/iothub",
-      position: "right"
     },
   ];
 
@@ -347,17 +333,16 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <div
               key={service.id}
-              className={`service-item ${service.position} ${
-                visibleItems.includes(index) ? 'visible' : ''
-              }`}
+              className={`service-item ${service.position} ${visibleItems.includes(index) ? 'visible' : ''
+                }`}
               data-index={index}
               onClick={() => handleServiceClick(service.link)}
               style={{ cursor: 'pointer' }}
             >
               <div className="service-image-wrapper">
                 <div className="service-image-container">
-                  <img 
-                    src={service.image} 
+                  <img
+                    src={service.image}
                     alt={service.title}
                     className="service-image"
                     loading="lazy"
@@ -371,7 +356,7 @@ const ServicesSection = () => {
                   <div className="service-number">0{service.id}</div>
                   <h3 className="service-heading">{service.title}</h3>
                   <p className="service-description">{service.description}</p>
-                  
+
                   <ul className="service-features">
                     {service.features.map((feature, idx) => (
                       <li key={idx} className="service-feature">
@@ -387,6 +372,234 @@ const ServicesSection = () => {
                   </button>
                 </div>
               </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+/* ======================
+   NEW BLACK & WHITE SERVICES SECTION
+====================== */
+const ServicesBlackWhite = () => {
+  const [visibleItems, setVisibleItems] = useState([]);
+  const servicesRef = useRef(null);
+  const navigate = useNavigate();
+
+  const services = [
+    {
+      id: 1,
+      number: "01.",
+      title: "Digital Marketing",
+      icon: <FaChartLine />,
+      description: "As a results-focused Digital marketing company, Our expertise as a Content marketing company, Seo Service in erode provider, Ad running company in erode, and Meta ad running company.",
+      link: "/digital"
+    },
+    {
+      id: 2,
+      number: "02.",
+      title: "App Development",
+      icon: <FaMobileAlt />,
+      description: "As a top software development company, Our app development services provide safe, scalable, and user-friendly mobile apps that are customized to your company's requirements and your clients' expectations.",
+      link: "/web"
+    },
+    {
+      id: 3,
+      number: "03.",
+      title: "Web development",
+      icon: <FaLaptopCode />,
+      description: "We use cutting-edge technology to build responsive, high-performing websites that improve user experience, increase engagement, and support your business objectives, strengthening our position as a trusted IT solution company in Erode.",
+      link: "/web"
+    },
+    {
+      id: 4,
+      number: "04.",
+      title: "UI / UX Designing",
+      icon: <FaPalette />,
+      description: "Our UI/UX design work focuses on producing aesthetically pleasing and user-friendly designs that enhance client satisfaction and offer smooth user experiences.",
+      link: "/web"
+    },
+    {
+      id: 5,
+      number: "05.",
+      title: "Internet of Things",
+      icon: <FaMicrochip />,
+      description: "To increase productivity and creativity, we provide intelligent IoT solutions that link devices, gather data in real time, and automate procedures.",
+      link: "/iothub"
+    },
+    {
+      id: 6,
+      number: "06.",
+      title: "Technical Trainer",
+      icon: <FaChalkboardTeacher />,
+      description: "With strong industry knowledge and practical experience, the trainer ensures learners gain real-world skills that align with current market demands.",
+      link: "/technical"
+    }
+  ];
+
+  useEffect(() => {
+    const servicesObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(entry.target.dataset.index);
+            setVisibleItems((prev) => {
+              if (!prev.includes(index)) {
+                return [...prev, index];
+              }
+              return prev;
+            });
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "0px 0px -50px 0px"
+      }
+    );
+
+    const items = servicesRef.current?.querySelectorAll('.service-card');
+    items?.forEach((item) => servicesObserver.observe(item));
+
+    return () => servicesObserver.disconnect();
+  }, []);
+
+  const handleServiceClick = (link) => {
+    navigate(link);
+    window.scrollTo(0, 0);
+  };
+
+  return (
+    <section className="services-bw-section" ref={servicesRef}>
+      <div className="services-bw-container">
+        <div className="section-header">
+          <h2 className="section-title">Our Services</h2>
+          <p className="section-subtitle">
+            Comprehensive IT solutions tailored to your business needs
+          </p>
+        </div>
+
+        <div className="services-bw-grid">
+          {services.map((service, index) => (
+            <div
+              key={service.id}
+              className={`service-card ${visibleItems.includes(index) ? 'visible' : ''}`}
+              data-index={index}
+              onClick={() => handleServiceClick(service.link)}
+            >
+              <div className="card-number">{service.number}</div>
+              <div className="card-icon">{service.icon}</div>
+              <h3 className="card-title">{service.title}</h3>
+              <p className="card-description">{service.description}</p>
+              <button className="card-btn">
+                <span>Read More</span>
+                <span className="btn-arrow">→</span>
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+/* ======================
+   WHY CHOOSE US SECTION
+====================== */
+const WhyChooseUs = () => {
+  const [visibleWhyItems, setVisibleWhyItems] = useState([]);
+  const whyRef = useRef(null);
+
+  const whyChooseUs = [
+    {
+      id: 1,
+      icon: <FaBullseye />,
+      title: "Result-Driven Approach",
+      description: "We focus on strategies that produce measurable results, using performance-based campaigns and professional online marketing service solutions to help your company expand."
+    },
+    {
+      id: 2,
+      icon: <FaBolt />,
+      title: "Fast Delivery",
+      description: "Quick turnaround times without compromising on quality and attention to detail."
+    },
+    {
+      id: 3,
+      icon: <FaLightbulb />,
+      title: "Customized Solutions",
+      description: "We offer specialized IT and digital solutions made to fit your company's needs and objectives, backed by our experience as a top software development company."
+    },
+    {
+      id: 4,
+      icon: <FaHandshake />,
+      title: "24/7 Support",
+      description: "Round-the-clock assistance to ensure your business never stops running."
+    },
+    {
+      id: 5,
+      icon: <FaDollarSign />,
+      title: "Cost Effective",
+      description: "Competitive pricing with maximum value and return on your investment."
+    },
+    {
+      id: 6,
+      icon: <FaTrophy />,
+      title: "Dedicated Support",
+      description: "To guarantee successful implementation and long-term success, our team provides ongoing assistance and direction as a trusted IT solution company in Erode."
+    }
+  ];
+
+  useEffect(() => {
+    const whyObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(entry.target.dataset.index);
+            setVisibleWhyItems((prev) => {
+              if (!prev.includes(index)) {
+                return [...prev, index];
+              }
+              return prev;
+            });
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "0px 0px -50px 0px"
+      }
+    );
+
+    const items = whyRef.current?.querySelectorAll('.why-card');
+    items?.forEach((item) => whyObserver.observe(item));
+
+    return () => whyObserver.disconnect();
+  }, []);
+
+  return (
+    <section className="why-choose-section" ref={whyRef}>
+      <div className="why-choose-container">
+        <div className="section-header">
+          <h2 className="section-title">Why Choose Us</h2>
+          <p className="section-subtitle">
+            What makes us different from the rest
+          </p>
+        </div>
+
+        <div className="why-choose-grid">
+          {whyChooseUs.map((item, index) => (
+            <div
+              key={item.id}
+              className={`why-card ${visibleWhyItems.includes(index) ? 'visible' : ''}`}
+              data-index={index}
+            >
+              <div className="why-icon-wrapper">
+                <div className="why-icon">{item.icon}</div>
+              </div>
+              <h3 className="why-title">{item.title}</h3>
+              <p className="why-description">{item.description}</p>
             </div>
           ))}
         </div>
@@ -448,9 +661,9 @@ export default function Home() {
         <Snowfall />
 
         {/* Mist Effect Overlay */}
-        <MistEffect 
-          isActive={mistActive} 
-          onComplete={() => console.log("Mist animation complete")} 
+        <MistEffect
+          isActive={mistActive}
+          onComplete={() => console.log("Mist animation complete")}
         />
 
         <div className={`hero-overlay ${contentFading ? 'fade-out' : ''}`}>
@@ -469,21 +682,28 @@ export default function Home() {
 
             <TypewriterText text={subtitleText} speed={25} delay={1200} />
 
-            <button 
+            {/* <button
               className="read-more-btn magnetic-btn"
               onClick={handleReadMore}
             >
               <span className="btn-text">Read more</span>
               <span className="arrow">→</span>
               <span className="btn-glow"></span>
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
 
-      {/* Services Section */}
+      {/* Original Services Section */}
       <ServicesSection />
-      <Footer/>
+
+      {/* New Black & White Services Section */}
+      <ServicesBlackWhite />
+
+      {/* Why Choose Us Section */}
+      <WhyChooseUs />
+
+      <HowWeWorkAndTestimonial/>
     </section>
   );
 }

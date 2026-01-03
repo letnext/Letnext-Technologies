@@ -24,36 +24,36 @@ const products = [
     tag: "Sales • Support",
     desc: "Manage leads, deals and customer communication from a single, unified dashboard.",
     img: "/lnt.png",
+    alt: "IT service and Digital marketing",
     link: "/digital",
     features: ["SEO Optimization", "Social Media", "Analytics", "Content Strategy"],
-    // stats: { users: "10K+", rating: "4.9★", growth: "+250%" }
   },
   {
     name: "Web Development",
     tag: "Java • Python • MERN Stack",
     desc: "Plan, execute and track multi-channel campaigns with real-time performance insights.",
     img: "./hotel.png",
+    alt: "IT service and Digital marketing",
     link: "/web",
     features: ["Responsive Design", "Full Stack", "E-commerce", "PWA"],
-    // stats: { users: "5K+", rating: "4.8★", growth: "+180%" }
   },
   {
     name: "Technical Trainer",
     tag: "Java • Python • C • C++ • MERN Stack",
     desc: "Monitor case and next hearing smart alerts and deep observability.",
     img: "./advocate.png",
+    alt: "IT service and Digital marketing",
     link: "/technical",
     features: ["Expert Training", "Live Projects", "Certification", "Placement Support"],
-    // stats: { users: "3K+", rating: "4.9★", growth: "+200%" }
   },
   {
     name: "IoT Device Hub",
     tag: "Edge • Automation",
     desc: "Onboard, control and analyze thousands of devices securely from a single console.",
     img: "./iot1.png",
+    alt: "IT service and Digital marketing",
     link: "/iothub",
     features: ["Device Control", "Real-time Monitoring", "Cloud Integration", "Security"],
-    // stats: { users: "15K+", rating: "4.7★", growth: "+300%" }
   },
 ];
 
@@ -133,19 +133,13 @@ const ProductCard = ({ product, index, onNavigate }) => {
         <div className="product-image-wrap">
           <img 
             src={product.img} 
-            alt={product.name} 
+            alt={product.alt}
             className="product-image"
             loading="lazy"
             decoding="async"
           />
           <div className="product-image-overlay" />
           <div className="product-shine" />
-          
-          {/* Stats Badge */}
-          {/* <div className="product-badge">
-            <span className="badge-icon">🔥</span>
-            <span className="badge-text">{product.stats.users}</span>
-          </div> */}
         </div>
 
         <div className="product-content">
@@ -343,8 +337,6 @@ export default function Product() {
     };
   }, [isTransitioning, navigate]);
 
-  // const filters = ["All Products", "Development", "Marketing", "IoT", "Training"];
-
   const productCategories = [
     {
       icon: FaLaptopCode,
@@ -372,29 +364,6 @@ export default function Product() {
     }
   ];
 
-  const testimonials = [
-    {
-      name: "Suresh",
-      role: "CEO, TechCorp",
-      // image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&q=80",
-      text: "LetNext Technologies transformed our digital presence. Their solutions are innovative and results-driven.",
-      rating: 5
-    },
-    {
-      name: "Sarah Williams",
-      role: "Marketing Director",
-      // image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&q=80",
-      text: "Outstanding service and support. The team went above and beyond our expectations.",
-      rating: 5
-    },
-    {
-      name: "Steve",
-      role: "Startup Founder",
-      // image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&q=80",
-      text: "Best investment we made. Their IoT solutions helped us scale rapidly and efficiently.",
-      rating: 5
-    }
-  ];
 
   return (
     <section className="product-section" id="product">
@@ -430,19 +399,6 @@ export default function Product() {
             ))}
           </div>
         </div>
-
-        {/* Filter Buttons */}
-        {/* <div className="filter-section">
-          {filters.map((filter, index) => (
-            <button
-              key={index}
-              className={`filter-btn ${activeFilter === filter.toLowerCase().replace(' ', '-') ? 'active' : ''}`}
-              onClick={() => setActiveFilter(filter.toLowerCase().replace(' ', '-'))}
-            >
-              {filter}
-            </button>
-          ))}
-        </div> */}
 
         {/* Products Grid */}
         <div className="product-grid">
@@ -491,47 +447,7 @@ export default function Product() {
           </div>
         </div>
 
-        {/* Testimonials Section */}
-        <div className="testimonials-section">
-          <h3 className="testimonials-title">What Our Clients Say</h3>
-          <p className="testimonials-subtitle">
-            Trusted by leading companies worldwide
-          </p>
-          
-          <div className="testimonials-grid">
-            {testimonials.map((testimonial, index) => (
-              <div 
-                key={index} 
-                className="testimonial-card"
-                style={{ animationDelay: `${index * 0.15}s` }}
-                onMouseEnter={() => setHoveredTestimonial(index)}
-                onMouseLeave={() => setHoveredTestimonial(null)}
-              >
-                <div className="testimonial-header">
-                  {/* <img 
-                    src={testimonial.image} 
-                    alt={testimonial.name}
-                    className="testimonial-avatar"
-                  /> */}
-                  <div className="testimonial-info">
-                    <h4 className="testimonial-name">{testimonial.name}</h4>
-                    <p className="testimonial-role">{testimonial.role}</p>
-                  </div>
-                </div>
-                <div className="testimonial-rating">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <span key={i} className="star">
-                      <FaStar />
-                    </span>
-                  ))}
-                </div>
-                {hoveredTestimonial === index && (
-                  <p className="testimonial-text">"{testimonial.text}"</p>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
+       
 
         {/* CTA Section */}
         <div className="product-cta-section">
@@ -558,7 +474,7 @@ export default function Product() {
         </div>
       </div>
 
-      <Footer/>
+      {/* <Footer/> */}
     </section>
   );
 }

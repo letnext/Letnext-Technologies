@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import * as THREE from "three";
 import "../styles/service.css";
-import Footer from "../component/Footer";
+
 import {
   FaChartLine,
   FaChartBar,
@@ -31,30 +31,31 @@ import { FaBullseye as FaTarget } from "react-icons/fa6";
 const services = [
   {
     name: "Digital Marketing",
-    img: "/dig.png",
+    name1: "How we help your business growth",
+    img: "../service/dig.png",
     color: "#FF6B6B",
     shortDesc: "Innovative solutions tailored to your needs",
-    fullDesc: "Elevate your brand with data-driven digital marketing strategies that deliver measurable results and sustainable growth.",
+    fullDesc: "We're a seasoned digital marketing company in Erode that's able to help you take your brand further and talk directly to the people who matter most by putting data to work in a way that gets real results, boosts your conversions, and sets your business up for long-term success.",
     features: [
       {
         icon: FaTarget,
         title: "Strategic Planning",
-        desc: "Comprehensive market analysis and targeted campaign development"
+        desc: "By digging deep into who your audience is, what makes them tick, we come up with marketing strategies that are smart and focused to make sure every single campaign hits the right people at precisely the right time."
       },
       {
         icon: FaChartBar,
         title: "Analytics & Insights",
-        desc: "Real-time performance tracking and ROI optimization"
+        desc: "We keep a close eye on your campaign's performance in real-time, and give you the insights you need to make a real difference - and get better and better results from your digital marketing spend with every passing day."
       },
       {
         icon: FaRocket,
         title: "Growth Marketing",
-        desc: "Scalable strategies to accelerate your business expansion"
+        desc: "Using affordable digital tactics that really deliver, we can help you build a bigger name for your business, drive in quality leads, and keep your revenue growing and growing across all your different channels."
       },
       {
         icon: FaLightbulb,
-        title: "Creative Content",
-        desc: "Engaging multimedia content that resonates with your audience"
+        title: "Innovative Content",
+        desc: "As a company that's well-respected in the field of content marketing, we're able to create eye-catching images and content that really speaks to your audience and makes them sit up and take notice in a big way - and that's just the start of what we can do to make your brand shine."
       }
     ],
     services: [
@@ -73,30 +74,30 @@ const services = [
   },
   {
     name: "App Development",
-    img: "/app.png",
+    img: "../service/App.png",
     color: "#4ECDC4",
     shortDesc: "Innovative solutions tailored to your needs",
-    fullDesc: "Transform your ideas into powerful mobile applications with cutting-edge technology and user-centric design.",
+    fullDesc: "We build mobile apps that are not only quick and user-friendly, but actually useful for both the people who use them, and the businesses that own them. As an app development company in Erode, we keep our focus on creating apps that genuinely help people and businesses out in the long run. For us, that means doing things in a way that's both secure and affordable, rather than just churning out code for the sake of it.",
     features: [
       {
         icon: FaMobileAlt,
         title: "Native Development",
-        desc: "High-performance iOS and Android applications"
+        desc: "We develop high-performance native apps for Android and iOS that fly on any device. Being a trusted IT solutions company in Erode, we consistently deliver apps that are super stable, feature-packed and offer a first-class user experience."
       },
       {
         icon: FaSyncAlt,
         title: "Cross-Platform",
-        desc: "React Native and Flutter for efficient multi-platform deployment"
+        desc: "When projects are on a tight deadline, or a tight budget, we like using cross-platform development because it lets us write one piece of code that'll run smoothly on any number of devices, keeping costs down and still giving us a app that performs equally well everywhere"
       },
       {
         icon: FaPaintBrush,
         title: "UI/UX Excellence",
-        desc: "Intuitive interfaces that users love to interact with"
+        desc: "We believe the first step to creating a great app is understanding the people who'll be using it, so we design clean, intuitive and engaging interfaces that look good, feel natural to use, and guide the user along a smooth journey from the very start to the end."
       },
       {
         icon: FaBolt,
         title: "Performance Optimization",
-        desc: "Lightning-fast apps with minimal resource consumption"
+        desc: "We pay really close attention to how an app behaves in real life, making sure it loads super quick, responds smoothly and doesn't just crash and burn under pressure - so the user gets a dependable and frustration-free experience every time."
       }
     ],
     services: [
@@ -115,30 +116,30 @@ const services = [
   },
   {
     name: "Web Development",
-    img: "/web.png",
+    img: "../service/web.png",
     color: "#45B7D1",
     shortDesc: "Innovative solutions tailored to your needs",
-    fullDesc: "Build stunning, responsive websites that captivate audiences and drive business growth with modern web technologies.",
+    fullDesc: "As a trusted IT solution company in Erode, we actually relish web development, which creates eye-catchy sites, feels easy to work with, and really converts visitors into real customers. From full-stack development down to ensuring your site looks great and works seamlessly on any device, maintaining security and reliability.",
     features: [
       {
         icon: FaLaptopCode,
         title: "Full-Stack Development",
-        desc: "End-to-end web solutions from frontend to backend"
+        desc: "From front-end design to back-end logic, we create full web solutions that run smoothly and scale with your business."
       },
       {
         icon: FaBullseye,
         title: "Responsive Design",
-        desc: "Seamless experience across all devices and screen sizes"
+        desc: "Your website looks great and works perfectly on mobiles, tablets, and desktops to ensure smooth user experiences."
       },
       {
         icon: FaCog,
         title: "Custom Solutions",
-        desc: "Tailored web applications built for your specific needs"
+        desc: "We develop websites that are custom-fit to your business needs, granting you flexibility, performance, and long-term growth."
       },
       {
         icon: FaLock,
         title: "Security First",
-        desc: "Enterprise-grade security and data protection"
+        desc: "Because, from day one, a website should be built with strong security measures to keep it safe and reliable along with your customer data."
       }
     ],
     services: [
@@ -157,25 +158,25 @@ const services = [
   },
   {
     name: "UI / UX Designing",
-    img: "/uiux.png",
+    img: "../service/uiux.png",
     color: "#96CEB4",
     shortDesc: "Innovative solutions tailored to your needs",
-    fullDesc: "Create memorable digital experiences through thoughtful design that combines aesthetics with functionality.",
+    fullDesc: "UI/UX designing involves the overall experience an app provides to its users. It is not just the interface of the app. As a UI/UX designing company, our focus is on designing our apps in a manner that they are interactive to a certain extent that the users wouldn't have to think twice about anything.",
     features: [
       {
         icon: FaSearch,
         title: "User Research",
-        desc: "Deep understanding of user behavior and preferences"
+        desc: "Before we even begin creating, we learn about our audience, their needs, behavior, and pain points. Learning from our users directly allows us to be better decision-makers and to build features that matter."
       },
       {
         icon: FaPalette,
         title: "Visual Design",
-        desc: "Beautiful interfaces that reflect your brand identity"
+        desc: "Visual design is where the ideas are implemented. The aim of our effort is to bring out a clean layout, proper color combination, as well as good fonts so that our application looks good as well as feels great."
       },
       {
         icon: FaRuler,
         title: "Design Systems",
-        desc: "Scalable component libraries for consistent experiences"
+        desc: "Design systems assist us in maintaining consistency. By providing design rules and components that can be reused, design systems ensure that everything has the same design and functionality, which helps us save time and ensures that the experience remains fluent as the app scales"
       }
     ],
     services: [
@@ -194,30 +195,30 @@ const services = [
   },
   {
     name: "Internet of Things",
-    img: "./iot.png",
+    img: "../service/iot.png",
     color: "#FFEAA7",
     shortDesc: "Innovative solutions tailored to your needs",
-    fullDesc: "Connect the physical and digital worlds with intelligent IoT solutions that drive efficiency and innovation.",
+    fullDesc: "Connect your physical and virtual experiences by leveraging innovative IoT solutions that improve efficiency and drive innovation for your business.",
     features: [
       {
         icon: FaGlobe,
         title: "Device Integration",
-        desc: "Seamless connectivity for smart devices and sensors"
+        desc: "Enjoy seamless connectivity between all your smart gadgets and sensors so that all your systems function in perfect harmony."
       },
       {
         icon: FaWifi,
         title: "Real-time Monitoring",
-        desc: "Live data streaming and instant alerts"
+        desc: "Get real-time insights with the help of live data streaming, allowing you to always be one step ahead."
       },
       {
         icon: FaRobot,
         title: "AI & Automation",
-        desc: "Intelligent systems that learn and adapt"
+        desc: "Use intelligent systems for learning, adapting, and optimizing to save time and increase productivity."
       },
       {
         icon: FaCloud,
         title: "Cloud Infrastructure",
-        desc: "Scalable cloud solutions for IoT data management"
+        desc: "Use the Cloud to securely and efficiently manage your IoT data with solutions that are designed to grow with you."
       }
     ],
     services: [
@@ -310,7 +311,7 @@ export default function Service() {
   const sceneRef = useRef(null);
   const animationRef = useRef(null);
   const sectionRefs = useRef([]);
-  
+
   // Manual navigation state
   const [dragStart, setDragStart] = useState(null);
   const [dragOffset, setDragOffset] = useState(0);
@@ -493,7 +494,7 @@ export default function Service() {
 
   const handleDragMove = useCallback((e) => {
     if (dragStart === null) return;
-    
+
     const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
     const offset = clientX - dragStart;
     setDragOffset(offset);
@@ -503,7 +504,7 @@ export default function Service() {
     if (dragStart === null) return;
 
     const threshold = 50; // Minimum drag distance to trigger navigation
-    
+
     if (Math.abs(dragOffset) > threshold) {
       if (dragOffset > 0) {
         // Dragged right - go to previous
@@ -588,8 +589,7 @@ export default function Service() {
       <div className="srv-main-content">
         <h1 className="srv-page-title">Our Services</h1>
         <p className="srv-page-subtitle">
-          Transforming ideas into reality with cutting-edge solutions
-        </p>
+          With great confidence, we enable companies for their next phase of expansion by developing and delivering comprehensive IT solutions including web and mobile app development, bespoke software creation, and digital marketing.        </p>
 
         <div
           className="srv-carousel-container"
@@ -685,7 +685,7 @@ export default function Service() {
           >
             <FaChevronLeft style={{ color: services[activeIndex].color }} />
           </button>
-          
+
           <button
             className="srv-nav-btn srv-nav-next"
             onClick={(e) => {
@@ -703,7 +703,7 @@ export default function Service() {
         </div>
 
         {/* Carousel Indicators */}
-        <div className="srv-carousel-indicators">
+        {/* <div className="srv-carousel-indicators">
           {services.map((service, index) => (
             <button
               key={index}
@@ -715,7 +715,7 @@ export default function Service() {
               }}
             />
           ))}
-        </div>
+        </div> */}
 
         <div className="srv-cta-wrapper">
           <button
@@ -748,8 +748,9 @@ export default function Service() {
                 <div className="srv-detail-icon" style={{ color: service.color }}>
                   {service.features[0].icon}
                 </div>
+                <h2 className="srv-detail-title">{service.name1}</h2>
+                <h2 className="srv-detail-title1">{service.name}</h2>
 
-                <h2 className="srv-detail-title">{service.name}</h2>
                 <p className="srv-detail-desc">{service.fullDesc}</p>
               </div>
 
@@ -836,15 +837,16 @@ export default function Service() {
                     boxShadow: `0 10px 40px ${service.color}40`
                   }}
                 >
-                  Get Started with {service.name}
+                  Start {service.name} Project Today
                   <span className="srv-detail-arrow">→</span>
                 </button>
               </div>
             </div>
           </section>
         ))}
+        
       </div>
-      <Footer />
+
     </div>
   );
 }
