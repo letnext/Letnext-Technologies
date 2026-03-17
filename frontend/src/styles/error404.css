@@ -1,0 +1,304 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.error-404-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000000;
+  z-index: 9999;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+.snowflake {
+  position: absolute;
+  top: -20px;
+  color: #ffffff;
+  font-size: 20px;
+  user-select: none;
+  pointer-events: none;
+  animation: fall linear infinite;
+  z-index: 1;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+.error-404-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #ffffff;
+  max-width: 600px;
+  padding: 40px;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.error-animation {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+.wifi-symbol {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  margin: 0 auto;
+}
+
+.wifi-icon {
+  width: 100px;
+  height: 100px;
+  opacity: 0.3;
+  animation: fadeBar 1.5s ease-in-out infinite;
+}
+
+@keyframes fadeBar {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.cross-mark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 80px;
+  color: #ffffff;
+  font-weight: bold;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+.error-code {
+  font-size: 120px;
+  font-weight: bold;
+  margin: 20px 0;
+  text-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+  letter-spacing: 10px;
+  animation: glitch 2s ease-in-out infinite;
+}
+
+@keyframes glitch {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-2px);
+  }
+  40% {
+    transform: translateX(2px);
+  }
+  60% {
+    transform: translateX(-2px);
+  }
+  80% {
+    transform: translateX(2px);
+  }
+}
+
+.error-title {
+  font-size: 32px;
+  margin: 20px 0;
+  font-weight: 600;
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+}
+
+.error-message {
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 20px 0;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 5px rgba(255, 255, 255, 0.2);
+}
+
+.error-suggestions {
+  margin: 30px 0;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 25px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.error-suggestions ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.error-suggestions li {
+  font-size: 16px;
+  margin: 12px 0;
+  color: rgba(255, 255, 255, 0.95);
+  position: relative;
+  padding-left: 25px;
+  text-align: left;
+}
+
+.error-suggestions li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.retry-button {
+  margin-top: 30px;
+  padding: 15px 40px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #000000;
+  background: #ffffff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.retry-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+  background: #f0f0f0;
+}
+
+.retry-button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
+}
+
+.retry-icon {
+  font-size: 24px;
+  display: inline-block;
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.retry-button:hover .retry-icon {
+  animation: rotate 0.5s linear infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .error-404-content {
+    padding: 20px;
+  }
+
+  .error-code {
+    font-size: 80px;
+    letter-spacing: 5px;
+  }
+
+  .error-title {
+    font-size: 24px;
+  }
+
+  .error-message {
+    font-size: 16px;
+  }
+
+  .wifi-symbol {
+    width: 100px;
+    height: 100px;
+  }
+
+  .wifi-icon {
+    width: 80px;
+    height: 80px;
+  }
+
+  .cross-mark {
+    font-size: 60px;
+  }
+
+  .retry-button {
+    padding: 12px 30px;
+    font-size: 16px;
+  }
+
+  .error-suggestions li {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .error-code {
+    font-size: 60px;
+  }
+
+  .error-title {
+    font-size: 20px;
+  }
+
+  .error-message {
+    font-size: 14px;
+  }
+
+  .wifi-symbol {
+    width: 80px;
+    height: 80px;
+  }
+
+  .wifi-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .cross-mark {
+    font-size: 50px;
+  }
+}

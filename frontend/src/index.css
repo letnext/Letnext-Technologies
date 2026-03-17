@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ─── CLS: Prevent Layout Shifts ──────────────────────────────────────────────
+   Images/media without explicit dimensions cause layout shifts (CLS).
+   This ensures ALL images reserve their space before loading. */
+img, video, iframe, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  /* aspect-ratio is set per image where known; this prevents collapse */
+}
+
+/* CLS: Ensure external fonts use font-display:swap (configured in @import or link tag).
+   This prevents invisible text (FOIT) so text is always visible while fonts load. */
+
+
+/* CLS: Reserve height for images that haven't loaded yet */
+img[loading="lazy"] {
+  min-height: 1px; /* prevents 0-height collapse */
+}
+
+/* ─── INP: Reduce Interaction Delay ───────────────────────────────────────────
+   These improve how quickly the browser responds to taps/clicks on mobile. */
+
+/* Eliminate the 300ms tap delay on mobile browsers */
+html {
+  touch-action: manipulation;
+}
+
+/* Remove :hover delays on interactive elements */
+button, a, [role="button"], input, select, textarea {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent; /* remove tap flash on mobile */
+  cursor: pointer;
+}
+
+/* INP: Use CSS contain to limit repaint/reflow scope */
+section, header, footer, nav, aside {
+  contain: layout style;
+}
+
+/* INP: Hint browser to promote animated elements to GPU layers */
+.hero-title, .service-card, .why-card, .snow-canvas, .mist-canvas {
+  will-change: transform;
+  transform: translateZ(0); /* force GPU composite layer */
+}
+
+/* ─── Browser Cache: hint browser to cache CSS backgrounds ───────────────────
+   background-image URLs benefit from proper cache headers. Set via server.
+   No CSS action required — handled by backend Cache-Control headers. */
+
