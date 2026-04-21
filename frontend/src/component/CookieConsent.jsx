@@ -16,17 +16,17 @@ const CookieConsent = () => {
   }, []);
 
   // Helper — safely calls gtag if it's available (loaded by index.html)
-  // const updateGtagConsent = (analytics, marketing) => {
-  //   if (typeof window.gtag !== 'function') return;
-  //   window.gtag('consent', 'update', {
-  //     'ad_storage':              marketing ? 'granted' : 'denied',
-  //     'ad_user_data':            marketing ? 'granted' : 'denied',
-  //     'ad_personalization':      marketing ? 'granted' : 'denied',
-  //     'analytics_storage':       analytics ? 'granted' : 'denied',
-  //     'functionality_storage':   'granted',
-  //     'personalization_storage': analytics ? 'granted' : 'denied',
-  //   });
-  // };
+  const updateGtagConsent = (analytics, marketing) => {
+    if (typeof window.gtag !== 'function') return;
+    window.gtag('consent', 'update', {
+      'ad_storage':              marketing ? 'granted' : 'denied',
+      'ad_user_data':            marketing ? 'granted' : 'denied',
+      'ad_personalization':      marketing ? 'granted' : 'denied',
+      'analytics_storage':       analytics ? 'granted' : 'denied',
+      'functionality_storage':   'granted',
+      'personalization_storage': analytics ? 'granted' : 'denied',
+    });
+  };
 
   const handleAcceptAll = () => {
     localStorage.setItem("letnext_cookie_consent", "accepted");
