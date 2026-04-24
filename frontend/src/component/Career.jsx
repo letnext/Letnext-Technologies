@@ -743,6 +743,24 @@ const Career = () => {
         type: "pdf"
       },]
     },
+    "25000043": {
+      id: "25000043",
+      name: "Gowtham D",
+      dob: "2026-03-01",
+      role: "Full Stack Development (Intern)",
+      joiningDate: "2026-03-01",
+      exitDate: "2026-03-30",
+      experience: "-",
+      certificates: [],
+      department: "Engineering",
+      // email: "sanjithaseerangan@gmail.com",
+      // image: "./career/sanjitha.webp",
+      documents: [{
+        name: "Internship Certificate",
+        url: "/pdf/22.pdf",
+        type: "pdf"
+      },]
+    },
     
   };
 
