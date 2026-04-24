@@ -757,7 +757,7 @@ const Career = () => {
       // image: "./career/sanjitha.webp",
       documents: [{
         name: "Internship Certificate",
-        url: "/pdf/22.pdf",
+        url: "/pdf/23.pdf",
         type: "pdf"
       },]
     },
